@@ -37,6 +37,7 @@
 						<li><a href="index.html">Home</a></li>
 						<li><a href="background.html">Background</a></li>
 						<li><a href="index.html#method">Voting Methods</a></li>
+						<li><a href="demoBallot.html#method">Ballot Demo</a></li>
 						<li><a href="ballot.html" class="button special">Create Ballot</a></li>
 					</ul>
 				</nav>
@@ -48,14 +49,11 @@
 					<header class="major">
 						<h2>Create Ballot</h2>
 						<p>Use the selections below to create a ballot with the voting method of your choice!</p>
-						<button type="submit" class="button big" ng-click="testRankedChoice()">Demo Ranked Choice</button>
-						<button type="submit" class="button big" ng-click="testApproval()">Demo Approval</button>
-						<button type="submit" class="button big" ng-click="testPlurality()">Demo Plurality</button>
 					</header>
 				</div>
 					<div class="row 150%" style="margin:2em">
-						<div class="4u 12u$(medium)">
-							<section class="box" style="text-align:left">
+						<div class="12u 12u$(medium)">
+							<section class="box">
 								<h3>Ballot selection:</h3>
 								<form>
 									Name your ballot <input type="text" ng-model="ballotName" placeholder="Ballot name here">
@@ -68,7 +66,7 @@
 									</datalist>
 									<br>
 									Add a ballot choice - you are able to add as many choices as you want <input type="text" ng-model="newChoice" placeholder="Add a ballot choice">
-									<button type="submit" ng-click="addChoice()">Enter choice</button>
+									<button type="submit" class="button small" ng-click="addChoice()">Enter choice</button>
 									<br>
 									<br>
 									Enter number of ballots <input type="number" min="1" ng-model="ballotNumber" placeholder="# of ballots here">
@@ -79,89 +77,6 @@
 								<button type="submit" class="button small" ng-click="addBallot()">Create ballot</button> <!-- want to add limit on submission to reset, not push another # of ballots-->
 							</section>
 						</div>
-						<div class="4u 12u$(medium)">
-							<section class="box">
-								<h3>{{ ballotName }} Ballots</h3>
-								<p>Cast votes here</p>
-								<div class="table-wrapper" >
-									<table class="alt" ng-repeat="ballot in ballots">
-										<thead>
-											<tr>
-												<th>Choice</th>
-												<th>Rank</th>
-											</tr>
-										</thead>
-
-										<tbody ng-if="selectedBallotType == 'Ranked Choice'">
-											<tr ng-repeat="choiceSelection in ballot.choiceSelections">
-												<td><b>{{choiceSelection.choice}}</b></td>
-												<td><input type="number" style="width: 48px" min="1" ng-model="choiceSelection.selection"></td>
-											</tr>
-										</tbody>
-
-										<tbody ng-if="selectedBallotType == 'Approval'">
-											<tr ng-repeat="choiceSelection in ballot.choiceSelections">
-												<td><b>{{choiceSelection.choice}}</b></td>
-												<td><input type="checkbox" name="selection" value="choiceSelection.selection" ng-model="choiceSelection.selection"></td>
-											</tr>
-										</tbody>
-
-										<tbody ng-if="selectedBallotType == 'Plurality'">
-											<tr ng-repeat="choiceSelection in ballot.choiceSelections">
-												<td><b>{{choiceSelection.choice}}</b></td>
-												<td><input type="checkbox" name="selection" ng-model="choiceSelection.selection" ng-click="updateSelection($index, ballot.choiceSelections)"></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<button type="submit" class="button small" ng-click="findwinner()">Calculate</button>
-						</div>
-						<div class="4u$ 12u$(medium)">
-							<section class="box">
-								<div>
-								<style>
-									h4 {
-    									border: 1px solid gray;
-										}
-								</style>
-									<h3>{{ ballotName }} Ballot Results</h3>
-									<!--if Ranked Choice ballot Results-->
-									<h4 ng-if="selectedBallotType == 'Ranked Choice'"> Winner: {{ winner }} </h4>
-									<div ng-repeat="event in history" ng-if="selectedBallotType == 'Ranked Choice'"> 
-										<div ng-if="event.type == 'count'">
-											<h3>Round: {{ $index/2 + 1 }}</h3>
-											<p ng-repeat="(choice, count) in event.value"> {{ choice }}: {{ count }} </p>
-										</div>
-										<div ng-if="event.type == 'statement'">
-											<p> {{ event.value }} </p>
-										</div>
-									</div>
-									<!--if Approval ballot Results-->
-									<div ng-if="selectedBallotType == 'Approval'">
-										<div ng-repeat="name in winner"> 
-											<h4>Winner: {{ name }} </h4>
-											<div>
-												<p ng-repeat="(choice, count) in counts"> {{choice}}: {{count}} </p>
-											</div>
-										</div>	
-									</div>
-									<!--if Plurality ballot Results-->
-									<div ng-if="selectedBallotType == 'Plurality'">
-										<div ng-repeat="name in winner"> 
-											<h4>Winner: {{ name }} </h4>
-											<div>
-												<p ng-repeat="(choice, count) in counts"> {{choice}}: {{count}} </p>
-											</div>
-										</div>	
-									</div>
-									<br>
-									<button type="submit" class="button small" ng-click="clearAll()">Clear All</button>
-									<!--<p>{{results()}}</p>
-									<div ng-repeat="(choice, selections) in findwinner()">
-											<span><b>{{ choice }}: </b></span>
-											<span ng-repeat="selection in selections track by $index"><a href="#">{{selection}}, </a></span>
-										</div>--> 
-									</div>
 							</section>
 						</div>
 					</div>
