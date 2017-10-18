@@ -2,6 +2,15 @@
 
 console.log("Loaded ranked_choice.js");
 
+/**
+ * Returns the winner of a ranked choice ballot to app.js. 
+ *
+ * Called in findwinner().
+ *
+ * @return
+ *   Returns a string name of the winner and an array with the history of rounds.
+ */
+
 var tallyRankedChoice = function(ballots) {
 	console.log("tallyRankedChoice", ballots);
 	var history = [];
@@ -12,6 +21,15 @@ var tallyRankedChoice = function(ballots) {
 	}
 	return winner;
 };
+
+/**
+ * Checks the ballots given to see if any choice has a majority
+ *
+ * Called in tallyRankedChoice().
+ *
+ * @return
+ *   Returns a string of winner is majority is found, false if no majority is found.
+ */
 
 var hasMajority = function(ballots, history) {
 	console.log("hasMajority", ballots);
@@ -38,9 +56,18 @@ var hasMajority = function(ballots, history) {
 		return [highestSoFar.choice, history];
 	}
 	return false;
-	//return string of majority
+	//return string if majority
 	//return false if no majority
 };
+
+/**
+ * Checks each ballot for the lowest ranked choice, if there is a full tie for first place it selects one of them randomly to remove.
+ *
+ * Called in tallyRankedChoice().
+ *
+ * @return
+ *   Returns the ballots, truncated with last place removed.
+ */
 
 var eliminateLastPlace = function(ballots, history) {
 	console.log("eliminateLastPlace", ballots);
@@ -74,8 +101,16 @@ var eliminateLastPlace = function(ballots, history) {
 	history.push({
 		type: "statement",
 		value: 'Eliminate: ' + lastPlace});
-	//return ballots, new truncated ballots
 };
+
+/**
+ * Adds counts for all number one choices.
+ *
+ * Called in eliminateLastPlace().
+ *
+ * @return
+ *   Returns an array of counts for top choice.
+ */
 
 var countTopChoice = function(ballots) {
 	console.log("countTopChoice", ballots);
@@ -90,7 +125,15 @@ var countTopChoice = function(ballots) {
 	return counts;
 };
 
-//topChoice goes through each ballot and sees which choice has the highest rank (highest being 1)
+/**
+ * Checks each ballot to see which choice is number 1
+ *
+ * Called in countTopChoice().
+ *
+ * @return
+ *   Returns string of top choice per ballot.
+ */
+
 var topChoice = function(ballot){
 	console.log("topChoice", ballot);
 	var choiceSelections = ballot.choiceSelections;
@@ -103,47 +146,18 @@ var topChoice = function(ballot){
 	return lowestSoFar.choice;
 };
 
+/**
+ * Removes last place from ballot.
+ *
+ * Called in eliminateLastPlace().
+ *
+ * @return
+ *   Returns ballot with last place choice removed.
+ */
+
 var removeChoice = function(ballot, lastPlace) {
 	console.log("removeChoice", ballot, lastPlace)
 	ballot.choiceSelections = ballot.choiceSelections.filter(function(choiceSelection) {
 		return !lastPlace.includes(choiceSelection.choice);
 	});
 };
-
-var logCounts = function(ballots){
-	
-	return null;
-}
-
-/*var isFullTie = function(countsDictionary, ballots) {
-	console.log("isFullTie", countsDictionary, ballots);
-	var numberOfSelections = ballot.choiceSelections.length;
-	if (numberOfSelections > Object.key(countsDictionary).length) {
-		return false;
-	}
-	for (var i = 0, l = Object.key(countsDictionary).length; i < l; i++) {
-        if(countsDictionary[i] !== countsDictionary[0])
-        	return false;
-    }
-    return true;
-}*/
-
-/*var tallyRankedChoice = function() {
-		var tally = {};
-		for(var i = 0; i < $scope.ballots.length; i++) {
-			var currentBallot = $scope.ballots[i];
-			for (var j = 0; j < currentBallot.choiceSelections.length; j++) {
-				var currentChoice = currentBallot.choiceSelections[j].choice;
-				if(!tally[currentChoice]) {
-					tally[currentChoice] = [];
-				}
-				var currentSelection = currentBallot.choiceSelections[j].selection;
-				if(currentSelection != null) {
-					tally[currentChoice].push(currentSelection)
-				}
-				//var counts = {};
-				//currentChoice.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
-			}
-		}
-		return tally;
-	}*/
