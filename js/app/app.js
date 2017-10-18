@@ -48,6 +48,10 @@ app.controller('ballotCtrl', function($scope) {
 		}
 	}
 
+	$scope.reloadRoute = function() {
+   		$window.location.reload();
+	}
+	
 	$scope.clearAll = function() {
 		$scope.choices = [];
 		$scope.ballotName = "";
