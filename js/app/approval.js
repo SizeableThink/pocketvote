@@ -1,6 +1,6 @@
 'use strict';
 
-console.log("Loaded approval.js");
+//console.log("Loaded approval.js");
 
 /**
  * Checks for the highest number of votes and returns the winner of an approval ballot to app.js. 
@@ -15,15 +15,15 @@ var tallyApproval = function(ballots) {
 	var voteCounts = countChoice(ballots);
 	var highestSoFar = -Infinity;
 	var winner = [];
-	console.log(voteCounts);
+	//console.log(voteCounts);
 	for (var choice in voteCounts) {
-		console.log("choice", choice);
+		//console.log("choice", choice);
 		if (voteCounts.hasOwnProperty(choice)){
 			var v = voteCounts[choice];
-			console.log("v", v);
+			//console.log("v", v);
 			if (v > highestSoFar) {
 				highestSoFar = voteCounts[choice];
-				console.log("highestSoFar", highestSoFar);
+				//console.log("highestSoFar", highestSoFar);
 			}
 		}
 	}	
@@ -35,7 +35,7 @@ var tallyApproval = function(ballots) {
 			}
 		}
 	}
-	console.log(winner, voteCounts);
+	//console.log(winner, voteCounts);
 	return [winner, voteCounts];
 };
 
@@ -50,9 +50,9 @@ var tallyApproval = function(ballots) {
 
 var countsList = function(ballots){
 	var voteCountsList = [];
-	console.log("ballots", ballots)
+	//console.log("ballots", ballots)
 	ballots.forEach(function(ballot) {
-		console.log("ballot.choiceSelections", ballot.choiceSelections)
+		//console.log("ballot.choiceSelections", ballot.choiceSelections)
 		for (var i in ballot.choiceSelections){
 			if (ballot.choiceSelections[i].selection === true){
 				voteCountsList.push(ballot.choiceSelections[i].choice);
@@ -73,7 +73,7 @@ var countsList = function(ballots){
 
 var countChoice = function(ballots) {
 	var voteCountsList = countsList(ballots);
-	console.log("voteCountsList", voteCountsList)
+	//console.log("voteCountsList", voteCountsList)
 	var voteCountDictionary = {};
 	for (var i = 0; i < voteCountsList.length; i++) {
 		voteCountDictionary[voteCountsList[i]] = (voteCountDictionary[voteCountsList[i]] || 0) + 1;

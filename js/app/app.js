@@ -1,6 +1,6 @@
 'use strict';
 
-console.log("Loaded app.js");
+//console.log("Loaded app.js");
 
 /**
  * creating the Angular app ballotApp and controller ballotCtrl. 
@@ -9,7 +9,7 @@ console.log("Loaded app.js");
 var app = angular.module('ballotApp', []);
 app.controller('ballotCtrl', function($scope) {
 
-	console.log($scope);
+	//console.log($scope);
 	$scope.ballotTypes = [{	
 		name: "Ranked Choice",
 	}, /*{
@@ -40,7 +40,7 @@ app.controller('ballotCtrl', function($scope) {
 			$scope.choices.push($scope.newChoice);
 			$scope.newChoice = resetText;
 		}
-		console.log("Logging addChoice")
+		//console.log("Logging addChoice")
 	};
 
 	/**
@@ -95,11 +95,11 @@ app.controller('ballotCtrl', function($scope) {
  	*/
 
 	$scope.findwinner = function() {
-		console.log($scope.ballots);
+		//console.log($scope.ballots);
 		var ballotsCopy = $.map($scope.ballots, function (ballot) {
 			return $.extend(true, {}, ballot);
 		});
-		console.log(ballotsCopy);
+		//console.log(ballotsCopy);
 		switch($scope.selectedBallotType) {
     		case "Ranked Choice":
         		var results = tallyRankedChoice(ballotsCopy);
@@ -130,8 +130,8 @@ app.controller('ballotCtrl', function($scope) {
 
 	 $scope.updateSelection = function(position, choiceSelections) {
       angular.forEach(choiceSelections, function(choiceSelection, index) {
-      	console.log("position, choiceSelections", position, choiceSelections);
-      	console.log("choiceSelection, index", choiceSelection, index);
+      	//console.log("position, choiceSelections", position, choiceSelections);
+      	//console.log("choiceSelection, index", choiceSelection, index);
         if (position != index) {
         	console.log("choiceSelection.checked", choiceSelection.checked);
           choiceSelection.selection = false;

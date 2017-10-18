@@ -12,7 +12,7 @@ console.log("Loaded ranked_choice.js");
  */
 
 var tallyRankedChoice = function(ballots) {
-	console.log("tallyRankedChoice", ballots);
+	//console.log("tallyRankedChoice", ballots);
 	var history = [];
 	var winner = hasMajority(ballots, history);
 	while (!winner) {
@@ -32,7 +32,7 @@ var tallyRankedChoice = function(ballots) {
  */
 
 var hasMajority = function(ballots, history) {
-	console.log("hasMajority", ballots);
+	//console.log("hasMajority", ballots);
 	var highestSoFar = {count: -Infinity};
 	var total = 0;
 	var countsDictionary = countTopChoice(ballots);
@@ -70,7 +70,7 @@ var hasMajority = function(ballots, history) {
  */
 
 var eliminateLastPlace = function(ballots, history) {
-	console.log("eliminateLastPlace", ballots);
+	//console.log("eliminateLastPlace", ballots);
 	var countsDictionary = countTopChoice(ballots);
 	var lowestSoFar = Infinity;
 	var lastPlace = [];
@@ -113,7 +113,7 @@ var eliminateLastPlace = function(ballots, history) {
  */
 
 var countTopChoice = function(ballots) {
-	console.log("countTopChoice", ballots);
+	//console.log("countTopChoice", ballots);
 	var counts = {};
 	ballots.forEach(function(ballot) {
 		var c = topChoice(ballot);
@@ -135,7 +135,7 @@ var countTopChoice = function(ballots) {
  */
 
 var topChoice = function(ballot){
-	console.log("topChoice", ballot);
+	//console.log("topChoice", ballot);
 	var choiceSelections = ballot.choiceSelections;
 	var lowestSoFar = {selection: Infinity}
 	choiceSelections.forEach(function(choiceSelection){
@@ -156,7 +156,7 @@ var topChoice = function(ballot){
  */
 
 var removeChoice = function(ballot, lastPlace) {
-	console.log("removeChoice", ballot, lastPlace)
+	//console.log("removeChoice", ballot, lastPlace)
 	ballot.choiceSelections = ballot.choiceSelections.filter(function(choiceSelection) {
 		return !lastPlace.includes(choiceSelection.choice);
 	});
