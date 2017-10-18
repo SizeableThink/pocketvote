@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ranked_choice.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ranked_choice.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
+
+console.log("Loaded ranked_choice.js");
+
+/**
+ * Returns the winner of a ranked choice ballot to app.js. 
+ *
+ * Called in findwinner().
+ *
+ * @return
+ *   Returns a string name of the winner and an array with the history of rounds.
+ */
+
+var tallyRankedChoice = function(ballots) {
+	console.log("tallyRankedChoice", ballots);
+	var history = [];
+	var winner = hasMajority(ballots, history);
+	while (!winner) {
+		eliminateLastPlace(ballots, history);
+		winner = hasMajority(ballots, history);
+	}
+	return winner;
+};
+
+/**
+ * Checks the ballots given to see if any choice has a majority
+ *
+ * Called in tallyRankedChoice().
+ *
+ * @return
+ *   Returns a string of winner is majority is found, false if no majority is found.
+ */
+
+var hasMajority = function(ballots, history) {
+	console.log("hasMajority", ballots);
+	var highestSoFar = {count: -Infinity};
+	var total = 0;
+	var countsDictionary = countTopChoice(ballots);
+	history.push({
+		type: "count",
+		value: countsDictionary});
+	for (var choice in countsDictionary) {
+		if (countsDictionary.hasOwnProperty(choice)) {
+			var v = countsDictionary[choice];
+			if (v > highestSoFar.count) {
+				highestSoFar = {choice: choice,
+								count: v};
+			}
+			total += v;
+		}
+	}
+	if (highestSoFar.count > (total/2)) {
+		history.push({
+		type: "statement",
+		value: 'Winner is ' + highestSoFar.choice});
+		return [highestSoFar.choice, history];
+	}
+	return false;
+	//return string if majority
+	//return false if no majority
+};
+
+/**
+ * Checks each ballot for the lowest ranked choice, if there is a full tie for first place it selects one of them randomly to remove.
+ *
+ * Called in tallyRankedChoice().
+ *
+ * @return
+ *   Returns the ballots, truncated with last place removed.
+ */
+
+var eliminateLastPlace = function(ballots, history) {
+	console.log("eliminateLastPlace", ballots);
+	var countsDictionary = countTopChoice(ballots);
+	var lowestSoFar = Infinity;
+	var lastPlace = [];
+	for (var choice in countsDictionary) {
+		if (countsDictionary.hasOwnProperty(choice)) {
+			var v = countsDictionary[choice];
+			if (v &lt; lowestSoFar) {
+				lowestSoFar = countsDictionary[choice];
+			}
+		}
+	}
+	for (var choice in countsDictionary) {
+		if (countsDictionary.hasOwnProperty(choice)) {
+			var v = countsDictionary[choice];
+			if (v === lowestSoFar) {
+				lastPlace.push(choice);
+			}
+		}
+	}
+	if (lastPlace.length === ballots[0].choiceSelections.length){
+	//in case of a full first place tie - random removal
+		var rand = lastPlace[Math.floor(Math.random() * lastPlace.length)];
+		lastPlace = [rand];
+		}
+	ballots.forEach(function(ballot) {
+		removeChoice(ballot, lastPlace);
+	});
+	history.push({
+		type: "statement",
+		value: 'Eliminate: ' + lastPlace});
+};
+
+/**
+ * Adds counts for all number one choices.
+ *
+ * Called in eliminateLastPlace().
+ *
+ * @return
+ *   Returns an array of counts for top choice.
+ */
+
+var countTopChoice = function(ballots) {
+	console.log("countTopChoice", ballots);
+	var counts = {};
+	ballots.forEach(function(ballot) {
+		var c = topChoice(ballot);
+		if (!counts[c]){
+			counts[c] = 0;
+		}
+		counts[c] += 1;
+	});
+	return counts;
+};
+
+/**
+ * Checks each ballot to see which choice is number 1
+ *
+ * Called in countTopChoice().
+ *
+ * @return
+ *   Returns string of top choice per ballot.
+ */
+
+var topChoice = function(ballot){
+	console.log("topChoice", ballot);
+	var choiceSelections = ballot.choiceSelections;
+	var lowestSoFar = {selection: Infinity}
+	choiceSelections.forEach(function(choiceSelection){
+		if (choiceSelection.selection &lt; lowestSoFar.selection) {
+			lowestSoFar = choiceSelection;
+		}
+	});
+	return lowestSoFar.choice;
+};
+
+/**
+ * Removes last place from ballot.
+ *
+ * Called in eliminateLastPlace().
+ *
+ * @return
+ *   Returns ballot with last place choice removed.
+ */
+
+var removeChoice = function(ballot, lastPlace) {
+	console.log("removeChoice", ballot, lastPlace)
+	ballot.choiceSelections = ballot.choiceSelections.filter(function(choiceSelection) {
+		return !lastPlace.includes(choiceSelection.choice);
+	});
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#app">app</a></li><li><a href="global.html#countChoice">countChoice</a></li><li><a href="global.html#countsList">countsList</a></li><li><a href="global.html#countTopChoice">countTopChoice</a></li><li><a href="global.html#eliminateLastPlace">eliminateLastPlace</a></li><li><a href="global.html#hasMajority">hasMajority</a></li><li><a href="global.html#removeChoice">removeChoice</a></li><li><a href="global.html#tallyApproval">tallyApproval</a></li><li><a href="global.html#tallyPlurality">tallyPlurality</a></li><li><a href="global.html#tallyRankedChoice">tallyRankedChoice</a></li><li><a href="global.html#topChoice">topChoice</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Oct 18 2017 15:53:25 GMT-0500 (CDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
