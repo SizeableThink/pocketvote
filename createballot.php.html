@@ -21,6 +21,10 @@
 		<script src="js/app/approval.js"></script>
 		<script src="js/app/plurality.js"></script>
 		<script src="js/app/app.js"></script>
+		<script src="js/app/form.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -38,45 +42,62 @@
 						<li><a href="background.html">Background</a></li>
 						<li><a href="index.html#method">Voting Methods</a></li>
 						<li><a href="demoBallot.html#method">Ballot Demo</a></li>
-						<li><a href="ballot.html" class="button special">Create Ballot</a></li>
+						<li><a href="createballot.php.html" class="button special">Create Ballot</a></li>
+						<li><a href="#">Login</a></li>
 					</ul>
 				</nav>
 			</header>
 
 		<!-- One -->
 			<section id="one" class="wrapper style1 special">
-				<div class="container">
+				<!-- <div class="container">
 					<header class="major">
 						<h2>Create Ballot</h2>
 						<p>Use the selections below to create a ballot with the voting method of your choice!</p>
 					</header>
-				</div>
+				</div> -->
 					<div class="row 150%" style="margin:2em">
 						<div class="12u 12u$(medium)">
-							<section class="box">
-								<h3>Ballot selection:</h3>
-								<form>
-									Name your ballot <input type="text" ng-model="ballotName" placeholder="Ballot name here">
+							<section class="box" id="ballotform">
+							<form id="lbl_form">
+
+									Title for your Ballot 
+									<input id="input_size" type="text" name="text1" ng-model="ballotName">
+
 									<br>
-									Choose your ballot type<br><input list="ballotTypes"
-									ng-model="selectedBallotType" ng-dropdown required ng-change="change()" class="alt">
+
+									Choose your ballot type
+									<input id="input_size" list="ballotTypes" ng-model="selectedBallotType" ng-dropdown required ng-change="change()" class="alt">
+
 									<br>
+
 									<datalist id="ballotTypes"> 
 									<option ng-repeat="type in ballotTypes" value="{{type.name}}">
 									</datalist>
+
 									<br>
-									Add a ballot choice - you are able to add as many choices as you want <input type="text" ng-model="newChoice" placeholder="Add a ballot choice">
-									<button type="submit" class="button small" ng-click="addChoice()">Enter choice</button>
+
+									Add/Remove your choices 
+									<button type="submit" id="addButton" ng-click="addChoice()">
+										<img id="addButton_img" src="images/add.png" />
+									</button>
+
+									<button type="submit" id="remvButton">
+										<img id="remvButton_img" src="images/remove.png" />
+									</button>
+
+									<div id="add_textbox">
+									</div>
+
 									<br>
-									<br>
-									Enter number of ballots <input type="number" min="1" ng-model="ballotNumber" placeholder="# of ballots here">
-									<br>
-									<br>
+									<div id="btn_align">
+										<button type="submit" class="button large" id="submitButton">Create Ballot</button>
+									</div>
+<!-- 									<button type="submit" class="button small" ng-click="addChoice()">Enter choice</button></div>
+ -->									
+									<!-- Enter number of ballots <input type="number" min="1" ng-model="ballotNumber" placeholder="# of ballots here"> -->
 									<!--<button type="submit" class="button big" ng-click="addBallot()">Submit selections</button>-->
 								</form>
-								<button type="submit" class="button small" ng-click="addBallot()">Create ballot</button> <!-- want to add limit on submission to reset, not push another # of ballots-->
-							</section>
-						</div>
 							</section>
 						</div>
 					</div>
