@@ -4,7 +4,7 @@ $(document).ready(function(){
 
   $("#addButton").click(function () {
 
-  	   $('#add_textbox').append('<input id="input_size" class="choice_ballot_txt' + counter + '" type="text" name="text2" ng-model="newChoice"><br>');  
+  	   $('#add_textbox').append('<p id="textbox' + counter + '"><input id="input_size" class="choice_ballot_txt' + counter + '" type="text" name="text2" ng-model="newChoice"></p>');  
       counter++;
   });
 
@@ -18,7 +18,7 @@ $(document).ready(function(){
 	counter--;
 	console.log(counter);
 
-        $(".choice_ballot_txt" + counter).remove();
+        $("#textbox" + counter).remove();
 
      });
 

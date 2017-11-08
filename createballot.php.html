@@ -60,34 +60,39 @@
 						<div class="12u 12u$(medium)">
 							<section class="box" id="ballotform">
 							<form id="lbl_form">
-
-									Title for your Ballot 
-									<input id="input_size" type="text" name="text1" ng-model="ballotName">
-
+									<div class="row">
+                            			<div class="col-md-6 col-sm-12">
+                            				<label for="text1"> Title for your Ballot </label>
+                                			<input id="input_size" type="text" name="text1" ng-model="ballotName">
+                            			</div>
+                            		</div>
 									<br>
 
-									Choose your ballot type
-									<input id="input_size" list="ballotTypes" ng-model="selectedBallotType" ng-dropdown required ng-change="change()" class="alt">
-
+									<div class="row">
+                            			<div class="col-md-6 col-sm-12">
+											<label for="text2">Choose your ballot type</label>
+											<input id="input_size" name="text2" list="ballotTypes" ng-model="selectedBallotType" ng-dropdown required ng-change="change()" class="alt">
+											<datalist id="ballotTypes"> 
+												<option ng-repeat="type in ballotTypes" value="{{type.name}}">
+											</datalist>
+										</div>
+                            		</div>
 									<br>
 
-									<datalist id="ballotTypes"> 
-									<option ng-repeat="type in ballotTypes" value="{{type.name}}">
-									</datalist>
+									<div class="row">
+                            			<div class="col-md-6 col-sm-12">
+											<label for="text3">Add/Remove your choices </label>
+											<button type="submit" id="addButton" ng-click="addChoice()">
+												<img id="addButton_img" src="images/add.png" />
+											</button>
 
-									<br>
-
-									Add/Remove your choices 
-									<button type="submit" id="addButton" ng-click="addChoice()">
-										<img id="addButton_img" src="images/add.png" />
-									</button>
-
-									<button type="submit" id="remvButton">
-										<img id="remvButton_img" src="images/remove.png" />
-									</button>
-
-									<div id="add_textbox">
+											<button type="submit" id="remvButton">
+												<img id="remvButton_img" src="images/remove.png" />
+											</button>
+											<div id="add_textbox">
+											</div>
 									</div>
+                            		</div>
 
 									<br>
 									<div id="btn_align">

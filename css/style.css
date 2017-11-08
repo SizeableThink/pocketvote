@@ -1241,6 +1241,11 @@
     background-color: #ffffff;
 }
 
+#addButton:hover,#addButton:focus, #remvButton:hover,#remvButton:focus {
+	outline: none;
+	cursor:pointer;
+}
+
 /* Submit Button  */
 #btn_align{
 	text-align: center;
@@ -1346,6 +1351,8 @@
 .forgot-password, .forgot-password:hover,.forgot-password:focus, #remeber_link {
 	color: #337ab7;
 	text-decoration: none;
+	outline: none;
+	cursor:pointer;
 }
 
 .btn-register {
