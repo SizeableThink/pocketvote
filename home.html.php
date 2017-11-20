@@ -26,8 +26,10 @@
 
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="index.html">Pocket Vote</a></h1>
-				<nav id="nav">
+				<h1><a href="home.html.php">Pocket Vote</a></h1>
+				<?php $page = 'one'; include('menu.php'); ?>
+
+				<!-- <nav id="nav">
 					<ul>
 						<li><a href="index.html">Home</a></li>
 						<li><a href="background.html">Background</a></li>
@@ -36,7 +38,7 @@
 						<li><a href="createballot.php.html" class="button special">Create Ballot</a></li>
 						<li><a href="login.php.html">Login</a></li>
 					</ul>
-				</nav>
+				</nav> -->
 			</header>
 
 		<!-- Banner -->

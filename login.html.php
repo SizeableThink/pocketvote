@@ -22,7 +22,7 @@
  -->        </noscript>
 </head>
 <body id="loginpg">
-    <h1 id="h1font"><a href="index.html"> POCKET VOTE </a></h1>
+    <h1 id="h1font"><a href="home.html.php"> POCKET VOTE </a></h1>
 
     <!-- Signup/ Signin Forms Start -->
     <div class="container">
