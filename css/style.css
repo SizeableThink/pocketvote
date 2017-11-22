@@ -27,7 +27,7 @@
 			transition: none !important;
 		}
 
-	body, input, select, textarea, label, #h1font {
+	body, input, select, textarea, label, #h1font, #h3font {
 		color: #444;
 		font-family: "Raleway", Helvetica, sans-serif;
 		font-size: 13pt;
@@ -1273,6 +1273,12 @@
     text-align: center;
 }
 
+#h3font{
+	font-size: 25px;
+	font-weight: bold;
+    text-align: center;
+    color:#51b6d9;
+}
 /* Body Padding */
 #loginpg{
 	padding: 50px;
@@ -1400,4 +1406,14 @@
 
 #recover_button{
 	text-align: center;
+}
+
+/**************** Form Validation *************/
+.val_error{
+	color:red;
+}
+
+
+.glyphicon{
+	color: #51b6d9;
 }

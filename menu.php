@@ -22,7 +22,7 @@
       </li>
       <li>
           <a <?php echo ($page == 'six') ? "class='button special'" : ""; ?> 
-                  href="login.html.php" >Login</a>
+                  href="signin.html.php" >Login</a>
       </li>
 
 

@@ -50,6 +50,9 @@
 						<a href="createballot.php.html" class="button big">Create Ballot Now</a>
 					</li>
 				</ul>
+				<?php  if (isset($_SESSION['username'])) : ?>
+			<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+		<?php endif ?>
 			</section>
 
 		<!-- One -->
