@@ -22,8 +22,6 @@ $(document).ready(function(){
 
    });
 
-  $('#reg_fname').on('input',function(){
-  		
-  });
+  
 
 });
