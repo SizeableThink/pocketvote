@@ -2,7 +2,7 @@
 
 console.log("Loaded demoBallots.js");
 
-demoRankedChoice = function() {
+testRankedChoice = function() {
 		$scope.choices = ["vanilla", "chocolate", "rocky road", "strawberry"];
 		$scope.ballotName = "Ice Cream";
 		$scope.selectedBallotType = "Ranked Choice";
@@ -106,7 +106,7 @@ demoRankedChoice = function() {
 	}
 
 
-	demoApproval = function() {
+	testApproval = function() {
 		$scope.choices = ["vanilla", "chocolate", "rocky road", "strawberry"];
 		$scope.ballotName = "Ice Cream";
 		$scope.selectedBallotType = "Approval";
@@ -209,7 +209,7 @@ demoRankedChoice = function() {
 				}]});
 	}
 
-	demoPlurality = function() {
+	testPlurality = function() {
 		$scope.choices = ["vanilla", "chocolate", "rocky road", "strawberry"];
 		$scope.ballotName = "Ice Cream";
 		$scope.selectedBallotType = "Plurality";
