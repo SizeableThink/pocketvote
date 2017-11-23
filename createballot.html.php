@@ -20,6 +20,8 @@
 		<script src="js/app/ranked_choice.js"></script>
 		<script src="js/app/approval.js"></script>
 		<script src="js/app/plurality.js"></script>
+		<script src="js/app/demoBallots.js"></script>
+		<script src="js/app/ballot.js"></script>
 		<script src="js/app/app.js"></script>
 		<script src="js/app/form.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -60,22 +62,24 @@
 					<div class="row 150%" style="margin:2em">
 						<div class="12u 12u$(medium)">
 							<section class="box" id="ballotform">
-							<form id="lbl_form">
+							<form id="createBallot" action="?" method="post">
 									<div class="row">
                             			<div class="col-md-6 col-sm-12">
-                            				<label for="text1"> Title for your Ballot </label>
-                                			<input id="input_size" type="text" name="text1" ng-model="ballotName">
+                            				<label for="ballotName"> Title for your Ballot </label>
+                                			<input id="input_size" type="text" name="ballotName">
                             			</div>
                             		</div>
 									<br>
 
 									<div class="row">
                             			<div class="col-md-6 col-sm-12">
-											<label for="text2">Choose your ballot type</label>
-											<input id="input_size" name="text2" list="ballotTypes" ng-model="selectedBallotType" ng-dropdown required ng-change="change()" class="alt">
-											<datalist id="ballotTypes"> 
-												<option ng-repeat="type in ballotTypes" value="{{type.name}}">
-											</datalist>
+											<label for="selectedBallotType">Choose your ballot type</label>
+											<select required name="selectedBallotType" id="input_size">
+  												<option value="" disabled="disabled" selected="selected">Select ballot type from dropdown</option>
+  												<option value="Approval">Approval</option>
+  												<option value="Plurality">Plurality</option>
+  												<option value="Ranked Choice">Ranked Choice</option>
+											</select>
 										</div>
                             		</div>
 									<br>
@@ -83,7 +87,7 @@
 									<div class="row">
                             			<div class="col-md-6 col-sm-12">
 											<label for="text3">Add/Remove your choices </label>
-											<button type="submit" id="addButton" ng-click="addChoice()">
+											<button type="submit" id="addButton">
 												<img id="addButton_img" src="images/add.png" />
 											</button>
 

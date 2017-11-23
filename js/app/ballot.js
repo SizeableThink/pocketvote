@@ -8,15 +8,6 @@ var ballotTypes = [{
 		name: "Plurality",
 	}];
 
-var addChoice = function () {
-		var resetText = null;
-		if ($scope.newChoice != resetText) {
-			$scope.choices.push($scope.newChoice);
-			$scope.newChoice = resetText;
-		}
-		//console.log("Logging addChoice")
-	};
-
 var updateSelection = function(position, choiceSelections) {
       angular.forEach(choiceSelections, function(choiceSelection, index) {
       	//console.log("position, choiceSelections", position, choiceSelections);

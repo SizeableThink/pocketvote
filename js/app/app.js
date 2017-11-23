@@ -20,7 +20,14 @@ app.controller('ballotCtrl', function($scope) {
 	$scope.choices = [];
 
  	//When creating ballot this allows user to add a choice by pushing the string onto the array
-	$scope.addChoice = addChoice;
+	$scope.addChoice = function () {
+		var resetText = null;
+		if ($scope.newChoice != resetText) {
+			$scope.choices.push($scope.newChoice);
+			$scope.newChoice = resetText;
+		}
+		//console.log("Logging addChoice")
+	};
 
  	//Declaring ballots (array literal)
 
@@ -73,7 +80,7 @@ app.controller('ballotCtrl', function($scope) {
  	* Allows plurality to be used on checkboxes and only have one checkbox marked at a time
  	*/
 
-	 $scope.updateSelection = updateSelection;
+	$scope.updateSelection = updateSelection;
 
     /**
  	* Demos ranked choice ballot
