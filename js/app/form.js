@@ -4,7 +4,7 @@ $(document).ready(function(){
 
   $("#addButton").click(function () {
 
-  	   $('#add_textbox').append('<p id="textbox' + counter + '"><input id="input_size" class="choice_ballot_txt' + counter + '" type="text" name="text2" </p>');  
+  	   $('#add_textbox').append('<p id="textbox' + counter + '"><input id="input_size" class="choice_ballot_txt' + counter + '" type="text" name="text2"> </p>');  
       counter++;
   });
 

@@ -39,16 +39,6 @@
 			<header id="header">
 				<h1><a href="home.html.php">Pocket Vote</a></h1>
 				<?php $page = 'five'; include('menu.php'); ?>
-				<!-- <nav id="nav">
-					<ul>
-						<li><a href="home.html">Home</a></li>
-						<li><a href="background.html">Background</a></li>
-						<li><a href="home.html#method">Voting Methods</a></li>
-						<li><a href="demoBallot.html#method">Ballot Demo</a></li>
-						<li><a href="createballot.html.php" class="button special">Create Ballot</a></li>
-						<li><a href="login.html.php">Login</a></li>
-					</ul>
-				</nav> -->
 			</header>
 
 		<!-- One -->
@@ -62,7 +52,7 @@
 					<div class="row 150%" style="margin:2em">
 						<div class="12u 12u$(medium)">
 							<section class="box" id="ballotform">
-							<form id="createBallot" action="?" method="post">
+							<form id="lbl_form" method="post">
 									<div class="row">
                             			<div class="col-md-6 col-sm-12">
                             				<label for="ballotName"> Title for your Ballot </label>
@@ -86,8 +76,8 @@
 
 									<div class="row">
                             			<div class="col-md-6 col-sm-12">
-											<label for="text3">Add/Remove your choices </label>
-											<button type="submit" id="addButton">
+											<label for="text3">Add/Remove your choices</label>
+											<button type="submit" id="addButton" name="choices">
 												<img id="addButton_img" src="images/add.png" />
 											</button>
 
@@ -103,10 +93,6 @@
 									<div id="btn_align">
 										<button type="submit" class="button large" id="submitButton">Create Ballot</button>
 									</div>
-<!-- 									<button type="submit" class="button small" ng-click="addChoice()">Enter choice</button></div>
- -->									
-									<!-- Enter number of ballots <input type="number" min="1" ng-model="ballotNumber" placeholder="# of ballots here"> -->
-									<!--<button type="submit" class="button big" ng-click="addBallot()">Submit selections</button>-->
 								</form>
 							</section>
 						</div>
