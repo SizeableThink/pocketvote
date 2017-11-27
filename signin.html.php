@@ -1,3 +1,6 @@
+ <?php include('php/sign_up_in.php');
+  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +13,14 @@
         <script src="js/jquery.min.js"></script>
         <script src="js/skel.min.js"></script>
         <script src="js/skel-layers.min.js"></script>
-        <script src="js/init.js"></script>
-        <script src="js/app/form.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/app/form.js"></script>
         <noscript>
             <link rel="stylesheet" href="css/skel.css" />
             <link rel="stylesheet" href="css/style.css" />
@@ -42,27 +48,29 @@
                     <!-- Signup/ Signin Panel Form Content Start -->
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
 
                                 <!-- Signin Form Content Start -->
-                                <form id="login-form" role="form">
+                                <form id="loginform" role="form" name="loginform" method="post" action="signin.html.php">
                                     <div class="form-group">
-                                        <input type="text" name="log_email" id="log_email" tabindex="1" class="form-control" placeholder="Your Email Address" value="">
+                                        <input type="text" name="log_email" id="log_email" tabindex="1" class="form-control" placeholder="Your Email Address" value="<?php echo $log_email; ?>">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="log_password" id="log_password" tabindex="2" class="form-control" placeholder="Your Password">
+                                        <input type="password" name="log_password" id="log_password" tabindex="2" class="form-control" placeholder="Your Password" value="<?php echo $log_passwd; ?>">
+                                       <p id="error"></p>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-12" id="btn_align">
-                                                <input type="submit" name="login_submit" id="login_submit" tabindex="4" class="button large" value="Sign In">
+                                                <input type="submit" name="login_submit" id="login_submit" tabindex="3" class="button large" value="Sign In">
                                             </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-12" id="btn_align">
-                                                    <a data-toggle="modal" data-target="#recover_pswd_modal" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                    <a data-toggle="modal" data-target="#recover_pswd_modal" tabindex="4" class="forgot-password">Forgot Password?</a>
                                             </div>
                                         </div>
                                     </div>
@@ -70,7 +78,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-12" id="btn_align">
-                                                    <label>Do you have an account? </label><a  href="signup.html.php"tabindex="6" class="account">   Sign Up</a>
+                                                    <label>Do you have an account? </label><a  href="signup.html.php" tabindex="5" class="account">   Sign Up</a>
                                             </div>
                                         </div>
                                     </div>

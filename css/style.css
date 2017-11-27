@@ -1035,7 +1035,7 @@
 		background-position: center center;
 		background-size: cover;
 		color: #ffffff;
-		padding: 14em 0em 14em;
+		padding: 19em 0em 15em;
 		text-align: center;
 	}
 
@@ -1409,11 +1409,19 @@
 }
 
 /**************** Form Validation *************/
-.val_error{
+#reg_email-error, #reg_password-error, #confirm_password-error, #error, #reg_fname-error, #reg_lname-error, #email_error, #log_email-error,#log_password-error{
 	color:red;
 }
 
 
 .glyphicon{
 	color: #51b6d9;
+}
+
+#textalign{
+	text-align: left;
+}
+
+#logout{
+	color: #cccccc;
 }

@@ -1,3 +1,23 @@
+<?php
+	session_start(); 
+
+	// if (!isset($_SESSION['firstname'])) {
+	// 	$_SESSION['msg'] = "You must log in first";
+	// 	header('location: home.html.php');
+	// }
+
+	//echo $_GET['logout'];
+
+	if (isset($_GET['logout'])) {
+		echo "hi";
+		session_destroy();
+		unset($_SESSION['firstname']);
+		header("location: home.html.php");
+	}
+
+
+?>
+
 <!DOCTYPE html>
 <!--
 	Transit by TEMPLATED
@@ -27,7 +47,7 @@
 		<!-- Header -->
 			<header id="header">
 				<h1><a href="home.html.php">Pocket Vote</a></h1>
-				<?php $page = 'one'; include('menu.php'); ?>
+				<?php $page = 'one'; include('php/menu.php'); ?>
 
 				<!-- <nav id="nav">
 					<ul>
@@ -46,113 +66,19 @@
 				<h2>Pocket Vote</h2>
 				<p>Alternative voting on the go</p>
 				<ul class="actions">
-					<li>
-						<a href="createballot.php.html" class="button big">Create Ballot Now</a>
-					</li>
+				  <?php if(isset($_SESSION['firstname'])){
+					echo '<li>
+						<a href="createballot.html.php" class="button big">Create Ballot Now</a>
+					</li>'; }  else{
+							echo '<li>
+						<a href="signin.html.php" class="button big">Create Ballot Now</a>
+					</li>';
+					}?>
 				</ul>
-				<?php  if (isset($_SESSION['username'])) : ?>
-			<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-		<?php endif ?>
+				<!-- <?php // if (isset($_SESSION['username'])) : ?>
+			<p>Welcome <strong><?php //echo $_SESSION['username']; ?></strong></p>
+		<?php //endif ?> -->
 			</section>
-
-		<!-- One -->
-			<section id="method" class="wrapper style1 special">
-				<div class="container">
-					<header class="major">
-						<h2>Voting Methods</h2>
-						<p>Click on the below voting methods for more information about each type.</p>
-					</header>
-					<div class="row 150%">
-						<div class="4u 12u$(medium)">
-							<section class="box">
-								<h3>Ranked Choice</h3>
-								<p>Rank choice voting works by voters selecting a candidate as their first choice, another candidate as their second choice, etc.</p>
-								<a href="ranked_choice.html" class="button fit">Learn more</a>
-							</section>
-						</div>
-						<div class="4u 12u$(medium)">
-							<section class="box">
-								<h3>Approval</h3>
-								<p>Approval voting works by voters selecting all of the candidates they “approve” of.</p>
-								<a href="approval.html" class="button fit">Learn more</a>
-							</section>
-						</div>
-						<div class="4u$ 12u$(medium)">
-							<section class="box">
-								<h3>Range Choice</h3>
-								<p>Range voting works by voters giving each candidate a score in order to show how much they like or dislike each candidate.</p>
-								<a href="range_choice.html" class="button fit">Learn more</a>
-							</section>
-						</div>
-					</div>
-				</div>
-			</section>
-			<hr />
-
-			<!-- Voting Methods Comparison Table -->
-						<section>
-							<h2>Voting Methods Comparison Table</h2>
-							<div class="table-wrapper">
-								<table class="alt">
-									<thead>
-										<tr>
-											<th></th>
-											<th>Clone-Proof</th>
-											<th>Mutual Majority</th>
-											<th>Consistency</th>
-											<th>Later-No-Harm</th>
-											<th>Later-No-Help</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><b>Approval</b></td>
-											<td>Yes</td>
-											<td>No</td>
-											<td>Yes</td>
-											<td>No</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td><b>Plurality</b></td>
-											<td>Spoilers</td>
-											<td>No</td>
-											<td>Yes</td>
-											<td>NA</td>
-											<td>NA</td>
-										</tr>
-										<tr>
-											<td><b>Ranked Choice</b></td>
-											<td>Yes</td>
-											<td>Yes</td>
-											<td>No</td>
-											<td>Yes</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td><b>Range Choice</b></td>
-											<td>Yes</td>
-											<td>No</td>
-											<td>Yes</td>
-											<td>No</td>
-											<td>Yes</td>
-										</tr>
-									</tbody>
-									</table>
-							</div>
-						<div>
-						<div>
-							<section>
-								<ul class="alt">
-									<li><u>Clone Proof</u> - the existence of duplicated or extremely similar candidates (clones) would not affect the winner.</li>
-									<li><u>Spoilers</u> - Candidates which decrease the chance of any of the similar or clone candidates winning. This causes the vote to be split between the two duplicates.</li>
-									<li><u>Mutual Majority</u> - A candidate within a group of candidates ranked above all others by a majority of voters will win.</li>
-									<li><u>Consistency</u> - whenever the electorate is divided into several parts and elections in those parts garner the same result, then an election of the entire electorate also garners that result.</li>
-									<li><u>Later-No-Harm</u> - A voter giving an additional ranking or positive rating to a less-preferred candidate does not cause a more-preferred candidate to lose.</li>
-									<li><u>Later-No-Help</u> - A voter giving an additional ranking or negative rating to a more-preferred candidate does not cause a less-preferred candidate to win.</li>
-								</ul>
-							</section>
-						</div>
 								
 	</body>
 </html>
