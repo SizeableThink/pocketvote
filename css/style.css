@@ -27,7 +27,7 @@
 			transition: none !important;
 		}
 
-	body, input, select, textarea, label, #h1font {
+	body, input, select, textarea, label, #h1font, #h3font {
 		color: #444;
 		font-family: "Raleway", Helvetica, sans-serif;
 		font-size: 13pt;
@@ -1035,7 +1035,7 @@
 		background-position: center center;
 		background-size: cover;
 		color: #ffffff;
-		padding: 14em 0em 14em;
+		padding: 19em 0em 15em;
 		text-align: center;
 	}
 
@@ -1273,6 +1273,12 @@
     text-align: center;
 }
 
+#h3font{
+	font-size: 25px;
+	font-weight: bold;
+    text-align: center;
+    color:#51b6d9;
+}
 /* Body Padding */
 #loginpg{
 	padding: 50px;
@@ -1400,4 +1406,22 @@
 
 #recover_button{
 	text-align: center;
+}
+
+/**************** Form Validation *************/
+#reg_email-error, #reg_password-error, #confirm_password-error, #error, #reg_fname-error, #reg_lname-error, #email_error, #log_email-error,#log_password-error{
+	color:red;
+}
+
+
+.glyphicon{
+	color: #51b6d9;
+}
+
+#textalign{
+	text-align: left;
+}
+
+#logout{
+	color: #cccccc;
 }

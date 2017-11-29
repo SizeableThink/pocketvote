@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+<?php
+	session_start(); 
+
+	// if (!isset($_SESSION['firstname'])) {
+	// 	$_SESSION['msg'] = "You must log in first";
+	// 	header('location: home.html.php');
+	// }
+
+	if (isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['firstname']);
+		header("location: home.html.php");
+	}
+
+
+?><!DOCTYPE html>
 <!--
 	Transit by TEMPLATED
 	templated.co @templatedco
@@ -38,7 +53,20 @@
 		<!-- Header -->
 			<header id="header">
 				<h1><a href="home.html.php">Pocket Vote</a></h1>
-				<?php $page = 'five'; include('menu.php'); ?>
+<<<<<<< HEAD
+=======
+				<?php $page = 'five'; include('php/menu.php'); ?>
+				<!-- <nav id="nav">
+					<ul>
+						<li><a href="home.html">Home</a></li>
+						<li><a href="background.html">Background</a></li>
+						<li><a href="home.html#method">Voting Methods</a></li>
+						<li><a href="demoBallot.html#method">Ballot Demo</a></li>
+						<li><a href="createballot.html.php" class="button special">Create Ballot</a></li>
+						<li><a href="login.html.php">Login</a></li>
+					</ul>
+				</nav> -->
+>>>>>>> origin/pocketvote_DB
 			</header>
 
 		<!-- One -->

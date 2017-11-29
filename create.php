@@ -5,7 +5,7 @@ require_once('config.php');
 global $pdo;
 
 if(isset($_POST['save'])){
-	$sql = "INSERT INTO poll (firstname, lastname, email)
+	$sql = "INSERT INTO poll (ballotName, selectedBallotType, pollURL, creationDate, poll_ID)
 	VALUES ('".$_POST["username"]."','".$_POST["password"]."','".$_POST["email"]."')";
 }
 
