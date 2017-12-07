@@ -35,6 +35,8 @@
 		<script src="js/app/ranked_choice.js"></script>
 		<script src="js/app/approval.js"></script>
 		<script src="js/app/plurality.js"></script>
+		<script src="js/app/ballot.js"></script>
+		<script src="js/app/demoBallot.js"></script>
 		<script src="js/app/app.js"></script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />

@@ -1,12 +1,4 @@
-var ballotTypes = [{	
-		name: "Ranked Choice",
-	}, /*{
-		name: "Range Choice",
-	},*/{
-		name: "Approval",
-	}, {
-		name: "Plurality",
-	}];
+
 
 var updateSelection = function(position, choiceSelections) {
       angular.forEach(choiceSelections, function(choiceSelection, index) {

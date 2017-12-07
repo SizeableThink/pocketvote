@@ -16,7 +16,10 @@ app.controller('ballotCtrl', function($scope) {
     	return;
     }
 
+    /**
 	//Declaring choices (array literal)
+	*/
+
 	$scope.choices = [];
 
  	//When creating ballot this allows user to add a choice by pushing the string onto the array
@@ -28,6 +31,16 @@ app.controller('ballotCtrl', function($scope) {
 		}
 		//console.log("Logging addChoice")
 	};
+
+	var ballotTypes = [{	
+		name: "Ranked Choice",
+	}, /*{
+		name: "Range Choice",
+	},*/{
+		name: "Approval",
+	}, {
+		name: "Plurality",
+	}];
 
  	//Declaring ballots (array literal)
 

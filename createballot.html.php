@@ -53,20 +53,8 @@
 		<!-- Header -->
 			<header id="header">
 				<h1><a href="home.html.php">Pocket Vote</a></h1>
-<<<<<<< HEAD
-=======
+
 				<?php $page = 'five'; include('php/menu.php'); ?>
-				<!-- <nav id="nav">
-					<ul>
-						<li><a href="home.html">Home</a></li>
-						<li><a href="background.html">Background</a></li>
-						<li><a href="home.html#method">Voting Methods</a></li>
-						<li><a href="demoBallot.html#method">Ballot Demo</a></li>
-						<li><a href="createballot.html.php" class="button special">Create Ballot</a></li>
-						<li><a href="login.html.php">Login</a></li>
-					</ul>
-				</nav> -->
->>>>>>> origin/pocketvote_DB
 			</header>
 
 		<!-- One -->
@@ -91,7 +79,7 @@
 
 									<div class="row">
                             			<div class="col-md-6 col-sm-12">
-											<label for="selectedBallotType">Choose your ballot type</label>
+											<label for="BallotType">Choose your ballot type</label>
 											<select required name="selectedBallotType" id="input_size">
   												<option value="" disabled="disabled" selected="selected">Select ballot type from dropdown</option>
   												<option value="Approval">Approval</option>
@@ -105,7 +93,7 @@
 									<div class="row">
                             			<div class="col-md-6 col-sm-12">
 											<label for="text3">Add/Remove your choices</label>
-											<button type="submit" id="addButton" name="choices">
+											<button type="submit" id="addButton" name="choice">
 												<img id="addButton_img" src="images/add.png" />
 											</button>
 
