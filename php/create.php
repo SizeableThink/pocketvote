@@ -4,14 +4,19 @@ require_once('config.php');
 
 global $pdo;
 
-PollID = string com_create_guid ( void );
+$PollID = smd5(uniqid(rand(), true));
+$ballotName=$_POST['ballotName'];
+$selectedBallotType=$_POST['selectedBallotType'];
+$pollURL="www.pocketvoter.com/";
+$BallotChoice_ID = 1;
 
-if(isset($_POST['save'])){
+if(isset($_POST['submit'])){
 	$sql = "INSERT INTO Poll (BallotName, BallotType, PollURL, Creation_Time, PollID)
-	VALUES ('".$_POST["ballotName"]."','".$_POST["selectedBallotType"]."','".$pollURL."','".$_POST["Creation_Time"]."','".$PollID);
-	foreach($_POST["choices"] as $key => $choice) {
-		INSERT INTO Ballot_Choice (BallotChoice_ID, PollID, BallotChoice)
-		VALUES (DEFAULT."','".$PollID."','".$choice);
+	VALUES ('$ballotName','$selectedBallotType','$pollURL', DEFAULT, '$PollID');"
+	foreach ($_POST['choices'] as $choice) {
+		$sql .= "INSERT INTO Ballot_Choice (BallotChoice_ID, PollID, BallotChoice)
+		VALUES (DEFAULT,'$PollID','$choice');
+		$BallotChoice_ID++;"
 	}
 }
 

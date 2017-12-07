@@ -68,7 +68,7 @@
 					<div class="row 150%" style="margin:2em">
 						<div class="12u 12u$(medium)">
 							<section class="box" id="ballotform">
-							<form id="lbl_form" method="post">
+							<form id="lbl_form" method="post" action="php/create.php">
 									<div class="row">
                             			<div class="col-md-6 col-sm-12">
                             				<label for="ballotName"> Title for your Ballot </label>
@@ -93,7 +93,7 @@
 									<div class="row">
                             			<div class="col-md-6 col-sm-12">
 											<label for="text3">Add/Remove your choices</label>
-											<button type="submit" id="addButton" name="choice">
+											<button type="button" id="addButton" name="choice">
 												<img id="addButton_img" src="images/add.png" />
 											</button>
 
@@ -107,7 +107,7 @@
 
 									<br>
 									<div id="btn_align">
-										<button type="submit" class="button large" id="submitButton">Create Ballot</button>
+										<button type="submit" class="button large" value="submit" name="submit" id="submitButton">Create Ballot</button>
 									</div>
 								</form>
 							</section>
