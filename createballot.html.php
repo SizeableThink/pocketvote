@@ -97,7 +97,7 @@
 												<img id="addButton_img" src="images/add.png" />
 											</button>
 
-											<button type="submit" id="remvButton">
+											<button type="button" id="remvButton">
 												<img id="remvButton_img" src="images/remove.png" />
 											</button>
 											<div id="add_textbox">
