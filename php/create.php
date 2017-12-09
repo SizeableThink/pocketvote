@@ -21,9 +21,9 @@ if(isset($_POST['submit'])){
 			VALUES ($key,'$PollID','$choice');";
 			}
 		
-		var_dump($_POST['submit']);
-		var_dump($sql);
-		var_dump($sql2);
+		//var_dump($_POST['submit']);
+		//var_dump($sql);
+		//var_dump($sql2);
 		$s = $pdo->prepare($sql);
 		$s -> execute();
 		$s2 = $pdo->prepare($sql2);
