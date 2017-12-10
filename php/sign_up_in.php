@@ -53,10 +53,10 @@ if (isset($_POST['register_submit'])) {
 
 	// register user if there are no errors in the form
 	if (count($reg_errors) == 0) {
-		// $password = md5($password_1);//encrypt the password before saving in the database
+		$password = md5($password_1);//encrypt the password before saving in the database
 
-		$query = "INSERT INTO registration (firstname, lastname, email, passwd) 
-				  VALUES('$fname', '$lname', '$reg_email', '$reg_password_1')";
+		$query = "INSERT INTO Organizer (FirstName, LastName, EmailID, Password) 
+				  VALUES('$fname', '$lname', '$reg_email', '$password')";
 		$s = $pdo->prepare($query);
 		$s -> execute();
 
@@ -82,16 +82,17 @@ if (isset($_POST['register_submit'])) {
 
 	
 	$log_password = trim($_POST['log_password']);
-	$query = "SELECT email, passwd,firstname FROM registration WHERE email = :emailid";
+	$query = "SELECT EmailID, Password,FirstName FROM Organizer WHERE EmailID = :emailid";
 	$login = $pdo->prepare($query);
 	$login->bindValue(':emailid', $_POST['log_email']);
 	$login->execute();
 	$row = $login->fetch(PDO::FETCH_ASSOC);//Retrieve the number of rows that matches
 
 		//Check by count
-		if($row['passwd'] == $log_password){
+		if($row['Password'] == md5($log_password)){
 			echo "ok";
-			$_SESSION['firstname'] = $row['firstname'];
+			$_SESSION['firstname'] = $row['FirstName'];
+			$_SESSION['emailid'] = $row['EmailID'];
 		}else{
 			echo "Email or password does not exist.";
 		}

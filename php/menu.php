@@ -22,6 +22,8 @@
 
             <li><a <?php echo ($page == 'five') ? "class='button special'" : ""; ?> href="createballot.html.php">Create Ballot</a></li>
 
+            <li><a <?php echo ($page == 'six') ? "class='button special'" : ""; ?> href="accounts.html.php">My Polls</a></li>
+
             <li id="logout">Hi <?php echo $_SESSION['firstname'];?>, (<a  href="home.html.php?logout=1" >Logout</a>)</li>
 
        <?php }else{ ?>

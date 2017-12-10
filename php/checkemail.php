@@ -2,7 +2,7 @@
 
 	require_once('config.php'); 
 
-	$query = "SELECT email FROM registration WHERE email = :emailid";
+	$query = "SELECT EmailID FROM Organizer WHERE EmailID = :emailid";
 	$checkemail = $pdo->prepare($query);
 	$checkemail->bindValue(':emailid', $_POST['reg_email']);
 	$checkemail -> execute();
