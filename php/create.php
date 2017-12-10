@@ -10,9 +10,12 @@ $selectedBallotType=$_POST['selectedBallotType'];
 $pollURL="www.pocketvoter.com/displayBallot.php?PollID=$PollID";
 $date = date('y-m-d h:i:s a', time());
 
+
+
 if(isset($_POST['submit'])){
 	try
   	{
+  		echo "Your URL is: $pollURL";
 		$sql = "INSERT INTO Poll (BallotName, BallotType, PollURL, Creation_Time, PollID)
 		VALUES ('$ballotName','$selectedBallotType','$pollURL', DEFAULT, '$PollID')";
 		$sql2 = "";

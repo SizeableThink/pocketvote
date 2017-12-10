@@ -59,6 +59,13 @@
                                 	</div>
                                 </div>
                                 <br>
+                                <div class="row">
+                                	<div class="col-md-6 col-sm-12">
+                                        <label class="control-label" for="description">Message from the organizer of your poll:</label>
+                                        <input id="description" name="notes" type="text" placeholder="notes" value="<?php echo $ballotType;?>" >
+                                	</div>
+                                </div>
+                                <br>
                                 <br>	
                                 <!-- Text input-->   
                             	<div class="row">
