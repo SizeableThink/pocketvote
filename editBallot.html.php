@@ -34,16 +34,16 @@
             <link rel="stylesheet" href="css/style-xlarge.css" />
         </noscript>
     </head>
-    <body id="displayballot">
+    <body id="editBallot">
 
 
  			<div class="row 150%" style="margin:2em">
 				<div class="12u 12u$(medium)">
 					<section class="box" id="ballot">
                     	<div class="well-block">
-                            <h2>Please fill out the ballot</h2>
+                            <h2>Edit the ballot below.</h2>
                         </div>
-                        	<form method="post" action="php/displayBallot.php">
+                        	<form method="post" action="php/editBallot.php">
                             <!-- Form start -->
                             	<div class="row">
                             		<div class="col-md-6 col-sm-12">
@@ -70,37 +70,9 @@
                                 <!-- Text input-->   
                             	<div class="row">
                                 	<div class="col-md-6 col-sm-12">
-                                    	<label class="control-label" for="ballottype">Make a selection below:</label>
+                                    	<p>You are unable to edit your ballot choices at this time.</p>
                                 	</div>
                             	</div>
-
-                           <!-- Select Ballotchoice_Plurality -->
-                               <div class="row">
-                                	<div class="col-md-6 col-sm-12">
-                                        <?php
-                                        if( $ballotChoiceArray[1]['BallotType'] == "Plurality"){
-                                        foreach($ballotChoiceArray as $i => $ballotChoicerow) {
-                                            $ballotChoice=$ballotChoiceArray[$i]['ballotChoice'];
-                                        echo "<input type=\"radio\" name=\"ballotChoiceRadio\" value=\"$ballotChoice\">  $ballotChoice<br>";}
-                                        }
-                                        elseif ( $ballotChoiceArray[1]['BallotType'] == "Approval"){
-                                        foreach($ballotChoiceArray as $i => $ballotChoicerow) {
-                                            $ballotChoice=$ballotChoiceArray[$i]['ballotChoice'];
-
-                                        echo "<input type=\"checkbox\" name=\"ballotChoiceRadio\" value=\"$ballotChoice\">  $ballotChoice<br>";}
-                                        }
-                                        elseif ( $ballotChoiceArray[1]['BallotType'] == "RankedChoice"){
-                                        foreach($ballotChoiceArray as $i => $ballotChoicerow) {
-                                            $ballotChoice=$ballotChoiceArray[$i]['ballotChoice'];
-                                            echo "<label for=\"$ballotChoice\"> $ballotChoice </label>";
-                                            echo "<input type=\"text\" class=\"form-control\" id=\"$ballotChoice\"> <br>";
-                                        }
-                                        }
-                                        ?>
-                                        </label>
-                                        
-                                    </div>
-                                </div> 
                                 <!-- Button -->
                                 <div class="row">
                                 	<div class="col-md-6 col-sm-12">
