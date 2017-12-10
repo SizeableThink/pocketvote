@@ -23,8 +23,6 @@
         <script src="js/app/ranked_choice.js"></script>
         <script src="js/app/approval.js"></script>
         <script src="js/app/plurality.js"></script>
-        <script src="js/app/demoBallots.js"></script>
-        <script src="js/app/ballot.js"></script>
         <script src="js/app/app.js"></script>
         <script src="js/app/form.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -36,46 +34,42 @@
             <link rel="stylesheet" href="css/style-xlarge.css" />
         </noscript>
     </head>
-    <body id="displayballopg">
+    <body id="displayballot">
 
 
- <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="well-block">
-                        <div class="well-title">
-                            <h2>Please fill the ballot</h2>
+ 			<div class="row 150%" style="margin:2em">
+				<div class="12u 12u$(medium)">
+					<section class="box" id="ballot">
+                    	<div class="well-block">
+                            <h2>Please fill out the ballot</h2>
                         </div>
-                        <form>
+                        	<form>
                             <!-- Form start -->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="ballottype">Ballottype</label>
-                                        <input id="ballottype" name="approval" type="text" placeholder="ballottype" value="<?php echo $ballotType;?>" >
-                                   </div>
+                            	<div class="row">
+                            		<div class="col-md-6 col-sm-12">
+                                        <label class="control-label" for="ballotname">Ballot Name</label>
+                                        <input id="ballotname" name="ballotname" type="text" placeholder="Ballot Name" value="<?php echo $ballotName;?>" >
+                            		</div>
+                            	</div>
+                            	<br>	
+                            	<div class="row">
+                                	<div class="col-md-6 col-sm-12">
+                                        <label class="control-label" for="ballottype">Ballot Type</label>
+                                        <input id="ballottype" name="Approval" type="text" placeholder="Ballot Type" value="<?php echo $ballotType;?>" >
+                                	</div>
                                 </div>
-                                <!-- Text input-->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="ballotname">Ballotname</label>
-                                        <input id="ballotname" name="ballotname" type="text" placeholder="ballotname" value="<?php echo $ballotName;?>" >
-                                    </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="ballottype">BallotChoices</label>
-
-                                   </div>
-                                </div>
-                            </div>
-
-
+                                <br>
+                                <br>	
+                                <!-- Text input-->   
+                            	<div class="row">
+                                	<div class="col-md-6 col-sm-12">
+                                    	<label class="control-label" for="ballottype">Make a selection below:</label>
+                                	</div>
+                            	</div>
 
                            <!-- Select Ballotchoice_Plurality -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
+                               <div class="row">
+                                	<div class="col-md-6 col-sm-12">
                                         <?php
                                         if( $ballotChoiceArray[1]['BallotType'] == "Plurality"){
                                         foreach($ballotChoiceArray as $i => $ballotChoicerow) {
@@ -101,12 +95,13 @@
                                     </div>
                                 </div> 
                                 <!-- Button -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
+                                <div class="row">
+                                	<div class="col-md-6 col-sm-12">
                                         <input type="submit" name="ballotchoice_submit" id="ballotchoice_submit" tabindex="3" class="button large" value="Submit BallotChoice">
                                     </div>
                                 </div>
                             </div>
+                        </section>
                         </form>
                         <!-- form end -->
                     </div>

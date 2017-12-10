@@ -8,13 +8,13 @@ $PollID = uniqid(rand(), true);
 $ballotName=$_POST['ballotName'];
 $selectedBallotType=$_POST['selectedBallotType'];
 $pollURL="www.pocketvoter.com/displayBallot.php?PollID=$PollID";
-$t=time();
+$date = date('y-m-d h:i:s a', time());
 
 if(isset($_POST['submit'])){
 	try
   	{
 		$sql = "INSERT INTO Poll (BallotName, BallotType, PollURL, Creation_Time, PollID)
-		VALUES ('$ballotName','$selectedBallotType','$pollURL', $t, '$PollID')";
+		VALUES ('$ballotName','$selectedBallotType','$pollURL', DEFAULT, '$PollID')";
 		$sql2 = "";
 		foreach ($_POST['choices'] as $key => $choice) {
 			 $sql2 .= "INSERT INTO Ballot_Choice (BallotChoice_ID, PollID, BallotChoice)

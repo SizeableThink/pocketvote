@@ -35,8 +35,6 @@
 		<script src="js/app/ranked_choice.js"></script>
 		<script src="js/app/approval.js"></script>
 		<script src="js/app/plurality.js"></script>
-		<script src="js/app/demoBallots.js"></script>
-		<script src="js/app/ballot.js"></script>
 		<script src="js/app/app.js"></script>
 		<script src="js/app/form.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -103,6 +101,13 @@
 											<div id="add_textbox">
 											</div>
 									</div>
+                            		</div>
+
+                            		<div class="row">
+                            			<div class="col-md-6 col-sm-12">
+                            				<label for="notes"> Write a message to your voters here: </label>
+                                			<input id="input_size" type="text" name="notes">
+                            			</div>
                             		</div>
 
 									<br>
