@@ -7,7 +7,19 @@
  */
 
 var app = angular.module('ballotApp', []);
-app.controller('ballotCtrl', function($scope) {
+app.controller('ballotCtrl', ['$scope','$http', function($scope,$http) {
+
+	/**
+ 	* Checking if query string is available to encode json
+ 	*/
+ 	var queryParameters = new URLSearchParams(window.location.search);
+ 	if (queryParameters.get("pollid") != null){
+ 		$http.post('php/results.php').success(function(data){
+		// Stored the returned data into scope
+		$scope.ballots = data;
+		});
+	}
+
 
 	//console.log($scope);
 	$scope.ballotTypes = [{	
@@ -99,7 +111,7 @@ app.controller('ballotCtrl', function($scope) {
 		var ballotsCopy = $.map($scope.ballots, function (ballot) {
 			return $.extend(true, {}, ballot);
 		});
-		//console.log(ballotsCopy);
+		console.log(ballotsCopy);
 		switch($scope.selectedBallotType) {
     		case "Ranked Choice":
         		var results = tallyRankedChoice(ballotsCopy);
@@ -476,4 +488,4 @@ app.controller('ballotCtrl', function($scope) {
 		return null;
 	}
 
-});
+}]);
