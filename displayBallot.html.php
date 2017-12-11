@@ -55,7 +55,7 @@
                             	<div class="row">
                                 	<div class="col-md-6 col-sm-12">
                                         <label class="control-label" for="ballottype">Ballot Type</label>
-                                        <input id="ballottype" name="Approval" type="text" placeholder="Ballot Type" value="<?php echo $ballotType;?>" >
+                                        <input id="ballottype" name="ballottype" type="text" placeholder="Ballot Type" value="<?php echo $ballotType;?>" >
                                 	</div>
                                 </div>
                                 <br>
@@ -85,13 +85,13 @@
                                         }
                                         elseif ( $ballotChoiceArray[1]['BallotType'] == "Approval"){
                                         foreach($ballotChoiceArray as $i => $ballotChoicerow) {
-                                            $ballotChoice=$ballotChoiceArray[$i]['ballotChoice'];
+                                            $ballotChoice = $ballotChoiceArray[$i]['ballotChoice'];
 
                                         echo "<input type=\"checkbox\" name=\"ballotChoiceRadio\" value=\"$ballotChoice\">  $ballotChoice<br>";}
                                         }
                                         elseif ( $ballotChoiceArray[1]['BallotType'] == "RankedChoice"){
                                         foreach($ballotChoiceArray as $i => $ballotChoicerow) {
-                                            $ballotChoice=$ballotChoiceArray[$i]['ballotChoice'];
+                                            $ballotChoice = $ballotChoiceArray[$i]['ballotChoice'];
                                             echo "<label for=\"$ballotChoice\"> $ballotChoice </label>";
                                             echo "<input type=\"text\" class=\"form-control\" id=\"$ballotChoice\"> <br>";
                                         }

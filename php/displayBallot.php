@@ -40,8 +40,8 @@ $index = 0;
 		     $index++;
 			}
 
-			$ballotName =  $ballotChoiceArray[1]['BallotName'];
-			$ballotType =  $ballotChoiceArray[1]['BallotType'];
+			//$ballotName =  $ballotChoiceArray[1]['BallotName'];
+			//$ballotType =  $ballotChoiceArray[1]['BallotType'];
 
 			echo $ballotName;
 			echo $ballotType;
@@ -61,7 +61,34 @@ $index = 0;
 
 		}*/
 
+      if(isset($_POST['ballotchoice_submit']))
+      {
+	try
+  	{
+  		//$PollID="1112";
+  		$pollId = $_GET['pollid'];
+		$sql = "INSERT INTO Ballot (PollID)
+		VALUES ('$PollID')";
+		echo "outside foeach";
 
+		foreach ($_POST['$PollID'] as $i => $ballotChoicerow) 
+		{
+			 $sql2 .= "INSERT INTO Selected_Ballot_Choice (BallotID, Selection,BallotID );
+			VALUES ($i, $ballotChoicerow,$BallotID);";
+			echo "Inside foeach";
+			}
+		$s = $pdo->prepare($sql);
+		$s -> execute();
+		$s2 = $pdo->prepare($sql2);
+		$s2 -> execute();
+	}
+	catch (PDOException $e)
+  	{
+    	$error = 'Error creating ballot: ' . $e->getMessage();
+    include 'error.html.php';
+    exit();
+	}
+}
 
 
 	?>
