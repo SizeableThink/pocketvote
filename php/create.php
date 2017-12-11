@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
 	try
   	{
   		echo "Your URL is: $pollURL";
-		$sql = "INSERT INTO Poll (BallotName, BallotType, PollURL, Creation_Time, PollID)
+		$sql = "INSERT INTO Poll (BallotName, BallotType, PollURL, CreationTime, PollID)
 		VALUES ('$ballotName','$selectedBallotType','$pollURL', DEFAULT, '$PollID')";
 		$sql2 = "";
 		foreach ($_POST['choices'] as $key => $choice) {

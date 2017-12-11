@@ -3,7 +3,7 @@
 try
 {
 
-  $pdo = new PDO('mysql:host=localhost;dbname=pocket_vote_DB', 'sizeablethink', '9qouSKVO758i');
+  $pdo = new PDO('mysql:host=localhost;dbname=pocketvote', 'root', 'Phoneix_87');
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $pdo->exec('SET NAMES "utf8"');
 }
