@@ -14,9 +14,14 @@ app.controller('ballotCtrl', ['$scope','$http', function($scope,$http) {
  	*/
  	var queryParameters = new URLSearchParams(window.location.search);
  	if (queryParameters.get("pollid") != null){
- 		$http.post('php/results.php').success(function(data){
+ 		$http.post('php/results.php', {}, {}).then(function(response){
 		// Stored the returned data into scope
+		console.log(response);
+		var data = response.data;
 		$scope.ballots = data;
+		$scope.ballotName = data[0].name;
+		$scope.selectedBallotType = data[0].type;
+		$scope.findwinner();
 		});
 	}
 

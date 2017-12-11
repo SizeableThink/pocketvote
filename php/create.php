@@ -7,7 +7,7 @@ global $pdo;
 $PollID = uniqid(rand(), true);
 $ballotName=$_POST['ballotName'];
 $selectedBallotType=$_POST['selectedBallotType'];
-$pollURL="www.pocketvoter.com/displayBallot.php?PollID=$PollID";
+$pollURL="www.pocketvoter.com/php/displayBallot.php?PollID=$PollID";
 $date = date('y-m-d h:i:s a', time());
 
 
