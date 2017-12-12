@@ -22,7 +22,7 @@ $index = 0;
 // To retrieve data for display ballot
 	
 		{
-		    pollId = $_GET['pollId'];
+		    $pollId = $_GET['pollid'];
 			//$pollId ="1112";
 
 			$query = "SELECT p.BallotName,p.BallotType,b.BallotChoice,p.Notes,b.BallotChoice_ID
