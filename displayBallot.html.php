@@ -46,24 +46,19 @@
  			<div class="row 150%" style="margin:2em">
 				<div class="12u 12u$(medium)">
 					<section class="box" id="ballot">
-                    	<div class="well-block">
-                            <h2>Please fill out the ballot</h2>
-                        </div>
                         	<form method="post" action="php/displayBallot.php?pollid=<?php echo $pollId;?>">
                             <!-- Form start -->
                             	<div class="row">
                                     <div class="col-md-6 col-sm-12">
-                                        <h4>Ballot Name: <?php echo $ballotName;?></h4>
+                                        <h2><?php echo $ballotName;?></h2>
                                     </div>
-                                </div>
-                                <br>    
+                                </div> 
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12">
-                                        <h4>Ballot Type: <?php echo $ballotType;?></h4>
+                                        <h3><?php echo $ballotType;?></h3>
                                     </div>
                                 </div>
                                 <br>
-                                <br>	
                                 <!-- Text input-->   
                             	<div class="row">
                                 	<div class="col-md-6 col-sm-12">
@@ -106,7 +101,7 @@
                                 <!-- Button -->
                                 <div class="row">
                                 	<div class="col-md-6 col-sm-12">
-                                        <input type="submit" name="ballotchoice_submit" id="ballotchoice_submit" tabindex="3" class="button large" value="Submit BallotChoice">
+                                        <input type="submit" name="ballotchoice_submit" id="ballotchoice_submit" tabindex="3" class="button large" value="Submit Ballot">
                                     </div>
                                 </div>
                             </div>
