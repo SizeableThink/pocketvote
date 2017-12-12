@@ -16,32 +16,30 @@ global $pdo;
     $newOptions = array();
 
     //Get the list of Voters, choices and their selections
-    $query2 = "SELECT Ballot.BallotID , Poll.BallotName AS name, Poll.BallotType AS type, Ballot_Choice.BallotChoice AS choice,Selected_Ballot_Choices.Selection AS selection FROM Poll, Ballot_Choice, Ballot, Selected_Ballot_Choices WHERE Poll.PollID = :pollid AND Ballot_Choice.PollID = :pollid AND Ballot.PollID = :pollid AND Ballot.BallotID = Selected_Ballot_Choices.BallotID AND Ballot_Choice.BallotChoice_ID = Selected_Ballot_Choices.BallotChoice_ID ";  
+    $query2 = "SELECT Ballot.BallotID , Poll.BallotName AS name, Poll.BallotType AS type, Ballot_Choice.BallotChoice AS choice,Selected_Ballot_Choices.Selection AS selection FROM Poll, Ballot_Choice, Ballot, Selected_Ballot_Choices WHERE Poll.PollID = :pollid AND Ballot_Choice.PollID = :pollid AND Ballot.PollID = :pollid AND Ballot.BallotID = Selected_Ballot_Choices.BallotID AND Ballot_Choice.BallotChoice_ID = Selected_Ballot_Choices.BallotChoice_ID ";
+      
     $poll_data = $pdo->prepare($query2);
     $poll_data->bindValue(':pollid', $pollID);
     $poll_data -> execute();
 
     // $row = $poll_data->fetchALL(PDO::FETCH_CLASS);
     $ballots = new stdClass();
-
+    $allBallots = array();
+    $newChoiceSelections = array();
 
     while($row = $poll_data->fetch(PDO::FETCH_ASSOC)){
         $ballotid = $row['BallotID'];
         $ballotChoice = $row['choice'];
         $selectionChoice = $row['selection'];
         //$choiceSelections[$ballotChoice] = $selectionChoice;
-        echo $ballotid;
-        echo $ballotChoice;
-        echo $selectionChoice;
-        $choiceSelections = new stdClass();
-        $choiceSelections->choice = $ballotChoice;
-        $choiceSelections->selection = $selectionChoice;
-        
-        var_dump($choiceSelections);
-        $ballots->name = $ballotName;
-        $ballots->type = $selectedBallotType;
-        $ballots->choiceSelections = $choiceSelections;
+        //echo $ballotid;
+        //echo $ballotChoice;
+        //echo $selectionChoice;
+        $choiceSelections = array('choice' => $ballotChoice, 'selection' => $selectionChoice);
+        array_push($newChoiceSelections, $choiceSelections);
 
+        //var_dump($newChoiceSelections);
+        
         //.= [
           //(object) array('name' => $ballotName, 'type' => $selectedBallotType,'choiceSelections' => $choiceSelections)
           //];
@@ -52,7 +50,13 @@ global $pdo;
         //}
         //]],];;     
       }
-     echo json_encode($ballots);
+
+      $ballots->name = $ballotName;
+        $ballots->type = $selectedBallotType;
+        $ballots->choiceSelections = $newChoiceSelections;
+        array_push($allBallots, $ballots);
+
+     echo json_encode($allBallots);
 
     //   $ballots[] -> name = $ballotName;
     //   $ballots[] -> type = $selectedBallotType;
@@ -278,5 +282,4 @@ global $pdo;
         // print("<pre>".print_r($ball,true)."</pre>");
         // echo "<br>ghhgjgh<br>";
         // print("<pre>".print_r($values,true)."</pre>");
-    ?>
     ?>
