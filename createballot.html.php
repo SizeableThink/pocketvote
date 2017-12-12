@@ -1,10 +1,10 @@
 <?php
-	session_start(); 
+	// session_start(); 
 
-	// if (!isset($_SESSION['firstname'])) {
-	// 	$_SESSION['msg'] = "You must log in first";
-	// 	header('location: home.html.php');
-	// }
+	// // if (!isset($_SESSION['firstname'])) {
+	// // 	$_SESSION['msg'] = "You must log in first";
+	// // 	header('location: home.html.php');
+	// // }
 
 	if (isset($_GET['logout'])) {
 		session_destroy();
@@ -12,6 +12,7 @@
 		header("location: home.html.php");
 	}
 
+	include('php/sign_up_in.php');
 
 ?><!DOCTYPE html>
 <!--

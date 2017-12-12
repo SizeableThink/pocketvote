@@ -1220,7 +1220,7 @@
 
 /********************** Create Ballot Page Styles **********************/
 /* Form Section */
-#ballotform{
+#ballotform, #poll_list{
 	text-align: left;
 }
 
@@ -1426,6 +1426,27 @@
 	color: #cccccc;
 }
 
-#header{
+/*#header{
 	color: red !important;
 }
+
+*/
+
+#listpoll{
+    color: black;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+#listpoll a {
+    color: #337ab7;
+}
+
+#listpoll h4 {
+    color: black;
+}
+
+#pollcont h4 {
+    color: black;
+}
+

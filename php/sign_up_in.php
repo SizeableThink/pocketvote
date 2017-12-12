@@ -64,6 +64,7 @@ if (isset($_POST['register_submit'])) {
 		$s -> execute();
 
 		$_SESSION['firstname'] = $fname;
+		$_SESSION['emailid'] = $row['EmailID'];
 		$_SESSION['success'] = "You are now logged in";
 		header('location: home.html.php');
 	}

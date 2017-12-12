@@ -1,17 +1,17 @@
 <?php
 	session_start(); 
 
-	// if (!isset($_SESSION['firstname'])) {
-	// 	$_SESSION['msg'] = "You must log in first";
-	// 	header('location: home.html.php');
-	// }
+	if (!isset($_SESSION['firstname'])) {
+		$_SESSION['msg'] = "You must log in first";
+		header('location: home.html.php');
+	}
 
 	if (isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['firstname']);
 		header("location: home.html.php");
 	}
-
+// include('php/polllist.php');
 
 ?><!DOCTYPE html>
 <!--
@@ -61,9 +61,10 @@
 			<section id="one" class="wrapper style1 special">
 				<div class="row 150%" style="margin:2em">
 					<div class="12u 12u$(medium)">
-						<section class="box" id="ballotform">
-						<h4> <?php include('php/polllist.php'); ?> </h4>
-
+						<section class="box" id="poll_list">
+						<div id="pollcont">
+							<h4> <?php include('php/polllist.php'); ?> </h4>
+						</div>
 						</section>
 						</div>
 					</div>
