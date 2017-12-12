@@ -22,6 +22,7 @@ global $pdo;
     $poll_data -> execute();
     // $row = $poll_data->fetchALL(PDO::FETCH_CLASS);
 
+    $ballots = [];
 
     while($row = $poll_data->fetch(PDO::FETCH_ASSOC)){
         $ballotid = $row['BallotID'];
@@ -31,13 +32,14 @@ global $pdo;
         echo $ballotid;
         echo $ballotChoice;
         echo $selectionChoice;
-       
-        $ballots = [];
+        $choiceSelections = [
+          (object) ['choice' => $ballotChoice, 'selection' => $selectionChoice]
+        ];
 
+        var_dump($choiceSelections);
         $ballots .= [
-          (object) ['name' => '$ballotName', 'type' => '$selectedBallotType',
-           'choiceSelections' => [(object) ['choice' => '$ballotChoice', 'selection' => '$selectionChoice'],
-           ]]];
+          (object) ['name' => $ballotName, 'type' => $selectedBallotType,'choiceSelections' => [(object) [$choiceSelections]]
+          ]];
 
         
           //(object) ['name' => '$ballotName', 'type' => '$selectedBallotType', '$choiceSelections' => (object)];
