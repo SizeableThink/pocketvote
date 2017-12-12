@@ -4,7 +4,7 @@ require_once('config.php');
 
 global $pdo;
 
-$PollID = uniqid(rand(), true);
+$PollID = strtr(base64_encode(openssl_random_pseudo_bytes(16)), "+/=", "XXX");
 $ballotName=$_POST['ballotName'];
 $selectedBallotType=$_POST['selectedBallotType'];
 $pollURL="www.pocketvoter.com/php/displayBallot.php?PollID=$PollID";

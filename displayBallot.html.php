@@ -85,7 +85,7 @@
                                         //echo "<input type=\"checkbox\" name=\"ballotChoicecbox\" value=\"$ballotChoice\">  $ballotChoice<br>";
                                         }
                                         }
-                                        elseif ( $ballotChoiceArray[0]['BallotType'] == "RankedChoice"){
+                                        elseif ( $ballotChoiceArray[0]['BallotType'] == "Ranked Choice"){
                                         foreach($ballotChoiceArray as $i => $ballotChoicerow) {
                                             $ballotChoice = $ballotChoiceArray[$i]['BallotChoice'];
 
@@ -97,7 +97,9 @@
                                         </label>
                                         
                                     </div>
-                                </div> 
+                                </div>
+                                <br>
+                                <br> 
                                 <!-- Button -->
                                 <div class="row">
                                 	<div class="col-md-6 col-sm-12">
