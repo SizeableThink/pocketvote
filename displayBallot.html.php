@@ -34,8 +34,14 @@
             <link rel="stylesheet" href="css/style-xlarge.css" />
         </noscript>
     </head>
-    <body id="displayballot">
+    <body ng-app="ballotApp" ng-controller="ballotCtrl" id="displayballot">
 
+        <!-- Header -->
+            <header id="header">
+                <h1><a href="home.html.php">Pocket Vote</a></h1>
+
+                <?php $page = 'five'; include('php/menu.php'); ?>
+            </header>
 
  			<div class="row 150%" style="margin:2em">
 				<div class="12u 12u$(medium)">
@@ -43,7 +49,7 @@
                     	<div class="well-block">
                             <h2>Please fill out the ballot</h2>
                         </div>
-                        	<form method="post" action="php/displayBallot.php">
+                        	<form method="post" action="php/displayBallot.php?pollid=<?php echo $pollId;?>">
                             <!-- Form start -->
                             	<div class="row">
                                     <div class="col-md-6 col-sm-12">
