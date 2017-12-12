@@ -17,7 +17,7 @@ global $pdo;
 
     //Get the list of Voters, choices and their selections
     $query2 = "SELECT Ballot.BallotID , Poll.BallotName AS name, Poll.BallotType AS type, Ballot_Choice.BallotChoice AS choice,Selected_Ballot_Choices.Selection AS selection FROM Poll, Ballot_Choice, Ballot, Selected_Ballot_Choices WHERE Poll.PollID = :pollid AND Ballot_Choice.PollID = :pollid AND Ballot.PollID = :pollid AND Ballot.BallotID = Selected_Ballot_Choices.BallotID AND Ballot_Choice.BallotChoice_ID = Selected_Ballot_Choices.BallotChoice_ID ";
-      
+
     $poll_data = $pdo->prepare($query2);
     $poll_data->bindValue(':pollid', $pollID);
     $poll_data -> execute();
@@ -55,6 +55,8 @@ global $pdo;
         $ballots->type = $selectedBallotType;
         $ballots->choiceSelections = $newChoiceSelections;
         array_push($allBallots, $ballots);
+
+        //$allBallots = (object) $allBallots;
 
      echo json_encode($allBallots);
 
