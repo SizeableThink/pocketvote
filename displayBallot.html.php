@@ -78,22 +78,23 @@
                                <div class="row">
                                 	<div class="col-md-6 col-sm-12">
                                         <?php
-                                        if( $ballotChoiceArray[1]['BallotType'] == "Plurality"){
+                                        if( $ballotChoiceArray[0]['BallotType'] == "Plurality"){
                                         foreach($ballotChoiceArray as $i => $ballotChoicerow) {
-                                            $ballotChoice=$ballotChoiceArray[$i]['ballotChoice'];
+                                            $ballotChoice=$ballotChoiceArray[$i]['BallotChoice'];
                                         echo "<input type=\"radio\" name=\"ballotChoiceRadio\" value=\"$ballotChoice\">  $ballotChoice<br>";}
                                         }
-                                        elseif ( $ballotChoiceArray[1]['BallotType'] == "Approval"){
+                                        elseif ( $ballotChoiceArray[0]['BallotType'] == "Approval"){
                                         foreach($ballotChoiceArray as $i => $ballotChoicerow) {
-                                            $ballotChoice = $ballotChoiceArray[$i]['ballotChoice'];
+                                            $ballotChoice = $ballotChoiceArray[$i]['BallotChoice'];
 
                                         echo "<input type=\"checkbox\" name=\"ballotChoiceRadio\" value=\"$ballotChoice\">  $ballotChoice<br>";}
                                         }
-                                        elseif ( $ballotChoiceArray[1]['BallotType'] == "RankedChoice"){
+                                        elseif ( $ballotChoiceArray[0]['BallotType'] == "RankedChoice"){
                                         foreach($ballotChoiceArray as $i => $ballotChoicerow) {
-                                            $ballotChoice = $ballotChoiceArray[$i]['ballotChoice'];
+                                            $ballotChoice = $ballotChoiceArray[$i]['BallotChoice'];
+                                            echo $ballotChoice;
                                             echo "<label for=\"$ballotChoice\"> $ballotChoice </label>";
-                                            echo "<input type=\"text\" class=\"form-control\" id=\"$ballotChoice\"> <br>";
+                                            echo "<input type=\"text\" class=\"form-control\" name=\"$ballotChoice\" id=\"$ballotChoice\"> <br>";
                                         }
                                         }
                                         ?>

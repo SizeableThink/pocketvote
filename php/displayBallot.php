@@ -10,7 +10,7 @@ $ballotName = "";
 $pollId = "";
 $ballotChoice = "";
 $ballotType = "";
-$ballotId = uniqid(rand(), true);
+//$ballotId = uniqid(rand(), true);
 $selection = "";
 $selectedballotchoiceID = "";
 $query = "";
@@ -22,11 +22,11 @@ $index = 0;
 // To retrieve data for display ballot
 		//if (isset($_POST['ballot_display'])) 
 		{
-			//$pollId = $_POST['pollId'];
-			$pollId ="1111";
+			$pollId = $_GET['pollId'];
+			//$pollId ="1116";
 
-			$query = "SELECT p.BallotName,p.BallotType,b.ballotChoice
-		              FROM Poll p,Ballot_Choice b where p.pollId = b.pollid and p.pollId= :pollId";
+			$query = "SELECT p.BallotName,p.BallotType,b.BallotChoice,p.Notes,b.BallotChoice_ID
+		              FROM poll p,Ballot_Choice b where p.PollID = b.PollID and p.PollID= :pollId";
 
 		    $ballot = $pdo->prepare($query);
 			$ballot->bindValue(':pollId', $pollId);
@@ -40,47 +40,53 @@ $index = 0;
 		     $index++;
 			}
 
-			//$ballotName =  $ballotChoiceArray[1]['BallotName'];
-			//$ballotType =  $ballotChoiceArray[1]['BallotType'];
+			$ballotName =  $ballotChoiceArray[0]['BallotName'];
+			$ballotType =  $ballotChoiceArray[0]['BallotType'];
+			$notes =  $ballotChoiceArray[0]['Notes'];
 
 			echo $ballotName;
 			echo $ballotType;
 
 		}
 		
-		/*if (isset($_POST['ballotchoice_submit'])) 
-		{
-			//$pollId = $_POST['pollId'];
-			$pollId ="1113";
-
-			$query = "";
-
-		    $ballot = $pdo->prepare($query);
-			$ballot->bindValue(':pollId', $pollId);
-			$ballot->execute();
-
-		}*/
 
       if(isset($_POST['ballotchoice_submit']))
       {
 	try
   	{
-  		//$PollID="1112";
   		$pollId = $_GET['pollid'];
+  		//$PollID="1112";
+  		echo "inside if ballotchoice_submit";
+  		
 		$sql = "INSERT INTO Ballot (PollID)
-		VALUES ('$PollID')";
-		echo "outside foeach";
-
-		foreach ($_POST['$PollID'] as $i => $ballotChoicerow) 
-		{
-			 $sql2 .= "INSERT INTO Selected_Ballot_Choice (BallotID, Selection,BallotID );
-			VALUES ($i, $ballotChoicerow,$BallotID);";
-			echo "Inside foeach";
-			}
+		VALUES ('$pollId')";
 		$s = $pdo->prepare($sql);
 		$s -> execute();
-		$s2 = $pdo->prepare($sql2);
-		$s2 -> execute();
+		echo "PollID Saved";
+		$sql3= "SELECT max(BallotID) as 'id' from Ballot";
+		$statement = $pdo->prepare($sql3);
+		$statement->execute();
+		$user_data = $statement->fetch();
+
+		$ballotid= $user_data['id'];
+	    echo $ballotid;
+		
+
+		foreach ($ballotChoiceArray as $i => $ballotChoicerow) 
+		{
+			echo "Inside for each";
+			$ballotchoiceid=$ballotChoiceArray[$i]['BallotChoice_ID'];
+			echo $ballotchoiceid;
+
+			$ballotchoice=$_POST[$ballotChoiceArray[$i]['BallotChoice']];
+			echo $ballotchoice;
+			$sql2 = "INSERT INTO Selected_Ballot_Choices (Selection,BallotID, BallotChoice_ID) VALUES ($ballotchoice,$ballotid, $ballotchoiceid)";
+			$s2 = $pdo->prepare($sql2);
+			$s2 -> execute();
+			
+		}
+		
+		
 	}
 	catch (PDOException $e)
   	{
