@@ -46,24 +46,15 @@
                         	<form method="post" action="php/displayBallot.php">
                             <!-- Form start -->
                             	<div class="row">
-                            		<div class="col-md-6 col-sm-12">
-                                        <label class="control-label" for="ballotname">Ballot Name</label>
-                                        <input id="ballotname" name="ballotname" type="text" placeholder="Ballot Name" value="<?php echo $ballotName;?>" >
-                            		</div>
-                            	</div>
-                            	<br>	
-                            	<div class="row">
-                                	<div class="col-md-6 col-sm-12">
-                                        <label class="control-label" for="ballottype">Ballot Type</label>
-                                        <input id="ballottype" name="ballottype" type="text" placeholder="Ballot Type" value="<?php echo $ballotType;?>" >
-                                	</div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <h4>Ballot Name: <?php echo $ballotName;?></h4>
+                                    </div>
                                 </div>
-                                <br>
+                                <br>    
                                 <div class="row">
-                                	<div class="col-md-6 col-sm-12">
-                                        <label class="control-label" for="description">Message from the organizer of your poll:</label>
-                                        <input id="description" name="notes" type="text" placeholder="notes" value="<?php echo $notes;?>" >
-                                	</div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <h4>Ballot Type: <?php echo $ballotType;?></h4>
+                                    </div>
                                 </div>
                                 <br>
                                 <br>	
@@ -98,7 +89,7 @@
                                             $ballotChoice = $ballotChoiceArray[$i]['BallotChoice'];
 
                                             echo "<label for=\"$ballotChoice\"> $ballotChoice </label>";
-                                            echo "<input type=\"text\" class=\"form-control\" name=\"$ballotChoice\" id=\"$ballotChoice\"> <br>";
+                                            echo "<input type=\"number\" min=\"1\" style=\"width: 48px\" class=\"form-control\" name=\"$ballotChoice\" id=\"$ballotChoice\"> <br>";
                                         }
                                         }
                                         ?>
