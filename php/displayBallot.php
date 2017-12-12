@@ -82,8 +82,8 @@ $index = 0;
 					
 					$selballotchoiceid=$_POST['ballotChoiceRadio'];
 
-					echo $selballotchoiceid;
-					$sql2 = "INSERT INTO Selected_Ballot_Choices (Selection,BallotID, BallotChoice_ID) VALUES (1,$ballotid, $selballotchoiceid)";
+					//echo $selballotchoiceid;
+					$sql2 = "INSERT INTO Selected_Ballot_Choices (Selection,BallotID, BallotChoice_ID) VALUES ('$selballotchoiceid','$ballotid', '$ballotchoiceid')";
 					$s2 = $pdo->prepare($sql2);
 					$s2 -> execute();
 					echo "Record Successfully Saved";
@@ -91,9 +91,10 @@ $index = 0;
 
 				}
 				elseif ( $ballotChoiceArray[0]['BallotType'] == "Approval"){
-					$selballotchoiceid=$_POST['ballotChoiceRadio'];
+					$selballotchoiceid=$_POST['ballotChoicecbox'];
 					//echo $selballotchoiceid;
-					$sql2 = "INSERT INTO Selected_Ballot_Choices (Selection,BallotID, BallotChoice_ID) VALUES (1,$ballotid, $selballotchoiceid)";
+					//echo $selballotchoiceid;
+					$sql2 = "INSERT INTO Selected_Ballot_Choices (Selection,BallotID, BallotChoice_ID) VALUES ('$selballotchoiceid','$ballotid', '$ballotchoiceid')";
 					$s2 = $pdo->prepare($sql2);
 					$s2 -> execute();
 					echo "Record Successfully Saved";
@@ -103,7 +104,7 @@ $index = 0;
 				elseif ( $ballotChoiceArray[0]['BallotType'] == "Ranked Choice"){
 					$ballotchoice=$_POST[$ballotChoiceArray[$i]['BallotChoice']];
 					//echo $ballotchoice;
-					$sql2 = "INSERT INTO Selected_Ballot_Choices (Selection,BallotID, BallotChoice_ID) VALUES ($ballotchoice,$ballotid, $ballotchoiceid)";
+					$sql2 = "INSERT INTO Selected_Ballot_Choices (Selection,BallotID, BallotChoice_ID) VALUES ('$ballotchoice','$ballotid', '$ballotchoiceid')";
 					$s2 = $pdo->prepare($sql2);
 					$s2 -> execute();
 					echo "Record Successfully Saved";

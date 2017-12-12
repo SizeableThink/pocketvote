@@ -16,7 +16,7 @@ global $pdo;
     $newOptions = array();
 
     //Get the list of Voters, choices and their selections
-    $query2 = "SELECT DISTINCT(B.BallotID),SBC.BallotChoice_ID, SBC.Selection, BC.BallotChoice FROM Ballot_Choice BC INNER JOIN Ballot B ON BC.PollID = B.PollID INNER JOIN Selected_Ballot_Choices SBC ON B.BallotID = SBC.BallotID";
+    $query2 = "SELECT DISTINCT(B.BallotID),SBC.BallotChoice_ID,BC.BallotChoice,SBC.Selection FROM Ballot_Choice BC JOIN Ballot B ON BC.PollID = B.PollID JOIN Selected_Ballot_Choices SBC ON B.BallotID = SBC.BallotID WHERE B.PollID='$pollID' and SBC.BallotChoice_ID=BC.BallotChoice_ID";  
 
     $poll_data = $pdo->prepare($query2);
     $poll_data -> execute();
@@ -25,32 +25,31 @@ global $pdo;
 
     while($row = $poll_data->fetch(PDO::FETCH_ASSOC)){
         $ballotid = $row['BallotID'];
-        $ballotChoice_id = $row['BallotChoice_ID'];
+        $ballotChoice = $row['BallotChoice'];
         $selectionChoice = $row['Selection'];
-        $newOptions[$ballotid][$ballotChoice_id] = $selectionChoice;           
-    }
+        //$choiceSelections[$ballotChoice] = $selectionChoice;
+        echo $ballotid;
+        echo $ballotChoice;
+        echo $selectionChoice;
+       
+        $ballots = [];
+
+        $ballots .= [
+          (object) ['name' => '$ballotName', 'type' => '$selectedBallotType',
+           'choiceSelections' => [(object) ['choice' => '$ballotChoice', 'selection' => '$selectionChoice'],
+           ]]];
+
+        
+          //(object) ['name' => '$ballotName', 'type' => '$selectedBallotType', '$choiceSelections' => (object)];
+
+            //foreach ($choiceSelections as $choice => $selection) {
+              //$ballots['choiceSelections'][] = object  [['choice' => '$choice', 'selection' => '$selection'],
+        //}
+        //]],];;     
+      }
 
 
-
-    foreach($newOptions as $ball => $values){
-        $newKey = "";
-        $newValue ="";
-        foreach ($values as $key => $value) {
-            $newKey = $key;
-            $newValue = $value;
-            $newBallots[] = [
-                (object) ['name' => $ballotName, 'type' => $selectedBallotType,
-                'choiceSelections' => [(object)['choice' => $key, 'selection' => $value]]]];
-                var_dump($newBallots);
-                echo $newKey;
-                echo $key;
-                echo $newValue;
-                echo $value;
-        }
-    }
-
-
-     echo json_encode($newBallots);
+     echo json_encode($ballots);
 
     //   $ballots[] -> name = $ballotName;
     //   $ballots[] -> type = $selectedBallotType;

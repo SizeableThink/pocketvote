@@ -80,9 +80,8 @@
                                         foreach($ballotChoiceArray as $i => $ballotChoicerow) {
                                             $ballotChoice = $ballotChoiceArray[$i]['BallotChoice'];
                                             $ballotChoiceid=$ballotChoiceArray[$i]['BallotChoice_ID'];
-                                        echo "<input type=\"radio\" name=\"ballotChoiceRadio\" value=\"$ballotChoiceid\">  $ballotChoice<br>";
+                                        echo "<input type=\"checkbox\" name=\"ballotChoicecbox\" value=\"$ballotChoice\">  $ballotChoice<br>";
 
-                                        //echo "<input type=\"checkbox\" name=\"ballotChoicecbox\" value=\"$ballotChoice\">  $ballotChoice<br>";
                                         }
                                         }
                                         elseif ( $ballotChoiceArray[0]['BallotType'] == "Ranked Choice"){
