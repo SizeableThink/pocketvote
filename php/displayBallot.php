@@ -100,7 +100,7 @@ $index = 0;
 					break;
 				}
 
-				elseif ( $ballotChoiceArray[0]['BallotType'] == "RankedChoice"){
+				elseif ( $ballotChoiceArray[0]['BallotType'] == "Ranked Choice"){
 					$ballotchoice=$_POST[$ballotChoiceArray[$i]['BallotChoice']];
 					//echo $ballotchoice;
 					$sql2 = "INSERT INTO Selected_Ballot_Choices (Selection,BallotID, BallotChoice_ID) VALUES ($ballotchoice,$ballotid, $ballotchoiceid)";
