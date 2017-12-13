@@ -1,0 +1,10 @@
+gcc-c++
+epel-release
+wget
+curl
+vim
+git
+lynx
+httpd
+mariadb-server mariadb
+php php-mysql
