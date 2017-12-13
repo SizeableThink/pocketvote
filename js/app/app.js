@@ -13,8 +13,9 @@ app.controller('ballotCtrl', ['$scope','$http', function($scope,$http) {
  	* Checking if query string is available to encode json
  	*/
  	var queryParameters = new URLSearchParams(window.location.search);
- 	if (queryParameters.get('pollid') != null){
- 		$http.post('php/results.php', {}, {}).then(function(response){
+ 	var pollID = queryParameters.get('pollid');
+ 	if (pollID != null){
+ 		$http.post('php/results.php?pollid=' + pollID, {}, {}).then(function(response){
 		// Stored the returned data into scope
 		//console.log(response);
 		var data = response.data;
