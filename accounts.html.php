@@ -1,10 +1,10 @@
 <?php
 	session_start(); 
 
-	if (!isset($_SESSION['firstname'])) {
-		$_SESSION['msg'] = "You must log in first";
-		header('location: home.html.php');
-	}
+	// if (!isset($_SESSION['firstname'])) {
+	// 	$_SESSION['msg'] = "You must log in first";
+	// 	header('location: home.html.php');
+	// }
 
 	if (isset($_GET['logout'])) {
 		session_destroy();
@@ -52,7 +52,7 @@
 
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="home.html.php">Pocket Vote</a></h1>
+				<h1 id="title_size"><a href="home.html.php">Pocket Vote</a></h1>
 
 				<?php $page = 'six'; include('php/menu.php'); ?>
 			</header>

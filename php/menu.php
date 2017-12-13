@@ -24,6 +24,8 @@
 
             <li><a <?php echo ($page == 'six') ? "class='button special'" : ""; ?> href="accounts.html.php">My Polls</a></li>
 
+            <li><a <?php echo ($page == 'seven') ? "class='button special'" : ""; ?> href="settings.html.php">Settings</a></li>
+
             <li id="logout">Hi <?php echo $_SESSION['firstname'];?>, (<a  href="home.html.php?logout=1" >Logout</a>)</li>
 
        <?php }else{ ?>
@@ -34,12 +36,3 @@
 
    </ul>
 </nav>
-
-<script type="text/javascript">
-
-  // document.getElementById("logout").onclick = function(){
-  //     alert("hi");
-  //     document.getElementById("logout").innerHTML = "<a href='signin.html.php' >Login</a>";
-
-  // };
-</script>

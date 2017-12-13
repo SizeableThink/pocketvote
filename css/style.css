@@ -1409,7 +1409,7 @@
 }
 
 /**************** Form Validation *************/
-#reg_email-error, #reg_password-error, #confirm_password-error, #error, #reg_fname-error, #reg_lname-error, #email_error, #log_email-error,#log_password-error{
+#reg_email-error, #reg_password-error, #confirm_password-error, #error, #error1, #reg_fname-error, #reg_lname-error, #email_error, #log_email-error,#log_password-error,#newpassword-error, #cnf_newpassword-error{
 	color:red;
 }
 
@@ -1450,3 +1450,6 @@
     color: black;
 }
 
+#title_size{
+	font-size:17px;
+}

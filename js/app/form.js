@@ -177,5 +177,71 @@ $(document).ready(function(){
       });
       return false;
   }
+
+  $("#passwordform").validate({
+
+    rules:{
+
+      newpassword: {
+        required: true,
+        strongPassword: true
+      },
+
+      cnf_newpassword: {
+        required: true,
+        strongPassword: true
+      }
+    },
+
+    messages:{
+      newpassword:{
+        required: 'Please enter your password',
+      },
+
+      cnf_newpassword:{
+        required: 'Please enter your password to confirm',
+        equalTo: 'Passwords do not match'
+      }
+    },
+    submitHandler: savePassword 
+  });
+
+
+ /* login submit */
+    function savePassword(){  
+
+      var data = $("#passwordform").serialize();
+    
+      $.ajax({
+    
+        type : 'POST',
+        url  : 'php/sign_up_in.php',
+        data : data,
+        beforeSend: function(){ 
+            $("#error1").fadeOut();
+            $("#successmsg").fadeOut();
+        },
+
+        success :  function(response){      
+            if(response=="ok"){  
+                    $("#newpassword").val("");   
+                    $("#cnf_newpassword").val("");
+                    $("#successmsg").fadeIn(50, function(){      
+                        $("#successmsg").html("<div class='alert alert-success'><strong>Success! </strong>Your new password is set.</div>");
+                    });
+            }else{
+                 $("#error1").fadeIn(50, function(){      
+                    $("#error1").html(response);
+                });
+            }
+          }
+      });
+      return false;
+  }
+
+
+
+
+  
 });
 

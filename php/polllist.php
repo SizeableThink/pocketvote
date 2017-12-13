@@ -7,7 +7,7 @@
 	$link_pollurl="www.pocketvoter.com/displayballot.php?PollID=";
 	$_SESSION['pollID'] = "";
 	$emailid = $_SESSION['emailid'];
-
+	// echo $_SESSION['emailid'];
 
 	echo 'Hi, ' .$_SESSION['firstname'] . '<br><br>Please find the list of the Polls you created<br><br>';
 
