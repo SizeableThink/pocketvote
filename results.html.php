@@ -56,7 +56,7 @@
 						<div>
 								<style>
 									h4 {
-    									border: 1px solid gray;
+    									border: 1px solid red;
 										}
 								</style>
 									<h3>{{ ballotName }} Ballot Results</h3>

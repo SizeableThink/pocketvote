@@ -70,26 +70,27 @@
                                <div class="row">
                                 	<div class="col-md-6 col-sm-12">
                                         <?php
-                                        if( $ballotChoiceArray[0]['BallotType'] == "Plurality"){
-                                        foreach($ballotChoiceArray as $i => $ballotChoicerow) {
-                                            $ballotChoice=$ballotChoiceArray[$i]['BallotChoice'];
-                                            $ballotChoiceid=$ballotChoiceArray[$i]['BallotChoice_ID'];
-                                        echo "<input type=\"radio\" name=\"ballotChoiceRadio\" value=\"$ballotChoiceid\">  $ballotChoice<br>";}
+                                        if($ballotChoiceArray[0]['BallotType'] == "Plurality"){
+                                        foreach($ballotChoiceArray as $key => $ballotChoicerow) {
+                                            $ballotChoice=$ballotChoiceArray[$key]['BallotChoice'];
+                                            $ballotChoiceID=$ballotChoiceArray[$key]['BallotChoice_ID'];
+                                        echo "<input type=\"radio\" name=\"ballotChoiceRadio\" value=\"$ballotChoice\">  $ballotChoice<br>";
+                                        echo "<input type=\"hidden\" name=\"ballotChoiceID\" value=\"$ballotChoiceID\">";}
                                         }
-                                        elseif ( $ballotChoiceArray[0]['BallotType'] == "Approval"){
-                                        foreach($ballotChoiceArray as $i => $ballotChoicerow) {
-                                            $ballotChoice = $ballotChoiceArray[$i]['BallotChoice'];
-                                            $ballotChoiceid=$ballotChoiceArray[$i]['BallotChoice_ID'];
-                                        echo "<input type=\"checkbox\" name=\"ballotChoicecbox\" value=\"$ballotChoice\">  $ballotChoice<br>";
-
+                                        elseif ($ballotChoiceArray[0]['BallotType'] == "Approval"){
+                                        foreach($ballotChoiceArray as $key => $row) {
+                                            $ballotChoice=$row['BallotChoice'];
+                                            $ballotChoiceID=$row['BallotChoice_ID'];
+                                        echo "<input type=\"checkbox\" name=\"ballotChoicecboxes[$key]\" value=\"$ballotChoice\">  $ballotChoice<br>";
+                                        echo "<input type=\"hidden\" name=\"ballotChoiceIDs[$key]\" value=\"$ballotChoiceID\">";}
                                         }
-                                        }
-                                        elseif ( $ballotChoiceArray[0]['BallotType'] == "Ranked Choice"){
-                                        foreach($ballotChoiceArray as $i => $ballotChoicerow) {
-                                            $ballotChoice = $ballotChoiceArray[$i]['BallotChoice'];
-
+                                        elseif ($ballotChoiceArray[0]['BallotType'] == "Ranked Choice"){
+                                        foreach($ballotChoiceArray as $key => $ballotChoicerow) {
+                                            $ballotChoice = $ballotChoiceArray[$key]['BallotChoice'];
+                                            $ballotChoiceID=$row['BallotChoice_ID'];
                                             echo "<label for=\"$ballotChoice\"> $ballotChoice </label>";
-                                            echo "<input type=\"number\" min=\"1\" style=\"width: 48px\" class=\"form-control\" name=\"$ballotChoice\" id=\"$ballotChoice\"> <br>";
+                                            echo "<input type=\"number\" min=\"1\" style=\"width: 48px\" class=\"form-control\" name=\"ballotChoices[$key]\" id=\"$ballotChoice\">";
+                                            echo "<input type=\"hidden\" name=\"ballotChoiceIDs[$key]\" value=\"$ballotChoiceID\">";
                                         }
                                         }
                                         ?>

@@ -64,8 +64,8 @@
 			<section id="one" class="wrapper style1 special">
 				<div class="container">
 					<header class="major">
-						<h2>Create Ballot</h2>
-						<p>Use the selections below to create a ballot with the voting method of your choice!</p>
+						<h2>Demo Ballot</h2>
+						<p>Use the interface below to see how the voting on Pocket Vote works!</p>
 						<button type="submit" class="button big" ng-click="testRankedChoice();">Demo Ranked Choice</button>
 						<button type="submit" class="button big" ng-click="testApproval()">Demo Approval</button>
 						<button type="submit" class="button big" ng-click="testPlurality()">Demo Plurality</button>
