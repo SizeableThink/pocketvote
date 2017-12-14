@@ -65,15 +65,14 @@ $index = 0;
 				$user_data = $statement->fetch();
 				$ballotid= $user_data['id'];
 
-					foreach ($ballotChoiceArray as $i => $ballotChoicerow) 
-						{
+
 							if($ballotChoiceArray[0]['BallotType'] == "Plurality"){
 								$ballotchoiceID=$_POST['ballotChoiceID'];
 								$sql2 = "INSERT INTO Selected_Ballot_Choices (Selection,BallotID, BallotChoice_ID) VALUES (1, $ballotid, $ballotchoiceID)";
 								$s2 = $pdo->prepare($sql2);
 								$s2 -> execute();
 								echo "Record Successfully Saved";
-								break;
+
 							}
 
 							elseif ($ballotChoiceArray[0]['BallotType'] == "Approval"){
@@ -81,30 +80,29 @@ $index = 0;
 								$ballotChoiceIDs = $_POST['ballotChoiceIDs'];
 								var_dump($selectedChoices);
 								foreach ($selectedChoices as $key => $selectedChoice) {
-										$ballotChoiceID=$ballotChoiceIDs[$key];
-										$sql2 .= "INSERT INTO Selected_Ballot_Choices (Selection, BallotID, BallotChoice_ID) VALUES (1, $ballotid, $ballotChoiceID);";
+									$ballotChoiceID=$ballotChoiceIDs[$key];
+									$sql2 .= "INSERT INTO Selected_Ballot_Choices (Selection, BallotID, BallotChoice_ID) VALUES (1, $ballotid, $ballotChoiceID);";
 								}
 								$s2 = $pdo->prepare($sql2);
 								$s2 -> execute();
 								echo "Record Successfully Saved";
-								break;
+
 							}
 
 							elseif ($ballotChoiceArray[0]['BallotType'] == "Ranked Choice"){
 								$selectedChoices=$_POST['ballotChoices'];
 								$ballotChoiceIDs = $_POST['ballotChoiceIDs'];
+
 								foreach ($selectedChoices as $key => $selectedChoice) {
+									echo $selectedChoice;
 									$ballotChoiceID=$ballotChoiceIDs[$key];
 									$sql2 .= "INSERT INTO Selected_Ballot_Choices (Selection, BallotID, BallotChoice_ID) VALUES ($selectedChoice, $ballotid, $ballotChoiceID);";
-									$s2 = $pdo->prepare($sql2);
-									$s2 -> execute();
-									echo "Record Successfully Saved";
-									echo "ballotid $ballotid";
-									echo "ballotChoiceID $ballotChoiceID";
 								}
+									$s2 = $pdo->prepare($sql2);
+									var_dump($sql2);
+									$s2 -> execute();
 							}
 
-			}
 		
 		
 		}
